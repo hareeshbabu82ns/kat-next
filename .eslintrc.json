@@ -1,3 +1,78 @@
 {
-  "extends": "next/core-web-vitals"
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 2021
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:tailwindcss/recommended",
+    "plugin:prettier/recommended"
+    
+  ],
+  "rules": {
+    "@next/next/no-html-link-for-pages": "off",
+    "testing-library/prefer-screen-queries": "off",
+    "react/jsx-key": "off",
+    "tailwindcss/no-custom-classname": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true
+      }
+    ],
+    "tailwindcss/classnames-order": "off",
+    "import/order": [
+      1,
+      {
+        "groups": ["external", "builtin", "internal", "sibling", "parent", "index"],
+        "pathGroups": [
+
+          {
+            "pattern": "env",
+            "group": "internal"
+          },
+          {
+            "pattern": "theme",
+            "group": "internal"
+          },
+          {
+            "pattern": "public/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["internal"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+  "settings": {
+    "tailwindcss": {
+      "callees": ["cn","clsx","@apply","cx","tw"],
+      "config": "tailwind.config.ts"
+    },
+    "next": {
+      "rootDir": ["./"]
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser"
+    }
+  ]
 }

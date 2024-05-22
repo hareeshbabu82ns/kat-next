@@ -1,28 +1,28 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import * as React from "react"
+import { Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu"
 
 export default function ThemeToggle() {
-  const { setTheme } = useTheme();
+  const { setTheme } = useTheme()
 
   const handleSetCustomThemeToHtml = (themeName: string) => {
     if (["light", "dark", "system"].includes(themeName)) {
-      setTheme(themeName);
-      document.documentElement.dataset.theme = undefined;
+      setTheme(themeName)
+      document.documentElement.dataset.theme = undefined
     } else {
-      document.documentElement.dataset.theme = themeName;
+      document.documentElement.dataset.theme = themeName
     }
-  };
+  }
 
   return (
     <DropdownMenu>
@@ -35,7 +35,7 @@ export default function ThemeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="scrollbar-none max-h-[500px] overflow-auto"
+        className="max-h-[500px] overflow-auto scrollbar-none"
       >
         <DropdownMenuItem onClick={() => handleSetCustomThemeToHtml("light")}>
           Light
@@ -48,5 +48,5 @@ export default function ThemeToggle() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

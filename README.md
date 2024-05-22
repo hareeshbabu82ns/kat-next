@@ -40,3 +40,5 @@ npm run db:studio # opens db explorer
 
 npm run dev
 ```
+
+- Config Ref: https://github.com/Blazity/next-enterprise
