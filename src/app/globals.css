@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --track-background: 166 25% 75%;
+    --thumb-background: 220 20% 75%;
+
+    --background: 166 25% 90%;
+    --foreground: 166 10% 10%;
+
+    --card: 166 30% 85%;
+    --card-foreground: 166 30% 10%;
+
+    --popover: 166 20% 90%;
+    --popover-foreground: 166 20% 10%;
+
+    --primary: 166 30% 40%;
+    --primary-foreground: 166 5% 95%;
+
+    --secondary: 220 40% 60%;
+    --secondary-foreground: 220 5% 20%;
+
+    --muted: 166 10% 85%;
+    --muted-foreground: 166 5% 40%;
+
+    --accent: 166 45% 85%;
+    --accent-foreground: 166 0% 10%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 120 55% 40%;
+    --success-foreground: 120 5% 95%;
+
+    --warning: 40 65% 40%;
+    --warning-foreground: 40 5% 95%;
+
+    --border: 166 15% 80%;
+    --input: 166 15% 80%;
+    --ring: 166 15% 55%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --track-background: 166 25% 15%;
+    --thumb-background: 220 20% 25%;
+
+    --background: 166 25% 10%;
+    --foreground: 166 10% 90%;
+
+    --card: 166 30% 15%;
+    --card-foreground: 166 30% 90%;
+
+    --popover: 166 30% 20%;
+    --popover-foreground: 166 30% 98%;
+
+    --primary: 166 30% 60%;
+    --primary-foreground: 166 5% 10%;
+
+    --secondary: 220 30% 50%;
+    --secondary-foreground: 220 5% 10%;
+
+    --muted: 166 10% 15%;
+    --muted-foreground: 166 5% 65%;
+
+    --accent: 166 35% 35%;
+    --accent-foreground: 166 0% 98%;
+
+    --destructive: 0 45% 30%;
+    --destructive-foreground: 0 0% 80%;
+
+    --success: 120 35% 40%;
+    --success-foreground: 120 5% 5%;
+
+    --warning: 40 55% 45%;
+    --warning-foreground: 40 5% 5%;
+
+    --border: 166 15% 20%;
+    --input: 166 15% 20%;
+    --ring: 166 15% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .highlight {
+    /* color: red; */
+    @apply bg-accent text-accent-foreground;
+  }
+}
