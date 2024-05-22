@@ -14,13 +14,13 @@ export default async function AppLayout({
 }) {
   await checkAuth()
   return (
-    <main>
+    <>
       <NextAuthProvider>
         <WithNavSidebar>{children}</WithNavSidebar>
       </NextAuthProvider>
 
       <Toaster richColors />
-    </main>
+    </>
   )
 }
 
@@ -38,7 +38,7 @@ function WithNavSidebar({
   return (
     <div
       className={cn(
-        "h-screen flex-1 items-start md:grid md:grid-cols-[260px_minmax(0,1fr)]",
+        "flex flex-1 items-start md:grid md:grid-cols-[260px_minmax(0,1fr)]",
         classNamePage
       )}
     >
@@ -50,7 +50,7 @@ function WithNavSidebar({
       >
         <Sidebar />
       </aside>
-      <section className="flex h-screen flex-1 flex-col overflow-hidden">
+      <section className="flex h-screen flex-col overflow-hidden">
         <Sheet>
           <Navbar sidebarTrigger>
             <AppTitleLogo className="flex md:hidden" />
