@@ -52,7 +52,7 @@ function WithNavSidebar({
       </aside>
       <section className="flex h-screen flex-1 flex-col overflow-hidden">
         <Sheet>
-          <Navbar themeToggle sidebarTrigger>
+          <Navbar sidebarTrigger>
             <AppTitleLogo className="flex md:hidden" />
           </Navbar>
           <SheetContent side="left" className="w-[260px] overflow-y-auto p-0">

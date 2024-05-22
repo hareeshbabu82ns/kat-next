@@ -1,5 +1,4 @@
 import MountainIcon from "@/components/layout/MountainIcon"
-import ThemeToggle from "@/components/shared/theme-toggle"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
@@ -19,7 +18,6 @@ export default function Home() {
           <Button asChild variant="link">
             <Link href="/sign-in">Sign In</Link>
           </Button>
-          <ThemeToggle />
         </nav>
       </header>
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
