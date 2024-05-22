@@ -1,5 +1,20 @@
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
+import tailwindAnimate from "tailwindcss-animate";
+import containerQueryPlugin from "@tailwindcss/container-queries";
+
+import twScrollbarPluginWithOptions from "./src/lib/plugins/tw-scroll-bar-plugin";
+
+const twScrollbarPlugin = twScrollbarPluginWithOptions({
+  track: {
+    background: "hsl(var(--track-background))",
+    darkBackground: "hsl(var(--track-background))",
+  },
+  thumb: {
+    background: "hsl(var(--thumb-background))",
+    darkBackground: "hsl(var(--thumb-background))",
+  },
+});
 
 const config = {
   darkMode: ["class"],
@@ -36,6 +51,14 @@ const config = {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -78,7 +101,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindAnimate, containerQueryPlugin, twScrollbarPlugin],
 } satisfies Config;
 
 export default config;

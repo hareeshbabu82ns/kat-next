@@ -1,3 +1,4 @@
+import ThemeToggle from "@/components/shared/theme-toggle";
 import Image from "next/image";
 
 export default function Home() {
@@ -6,12 +7,7 @@ export default function Home() {
       <h1 className="text-6xl font-bold text-center">
         Welcome to Karumari Amman Temple
       </h1>
-      <Image
-        src="/images/nextjs.svg"
-        alt="Next.js Logo"
-        width={300}
-        height={300}
-      />
+      <Image src="/next.svg" alt="Next.js Logo" width={300} height={300} />
     </main>
   );
 }
