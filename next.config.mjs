@@ -1,4 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+import "./env.mjs"
 
-export default nextConfig;
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ["avatars.githubusercontent.com"],
+  },
+}
+
+export default nextConfig
