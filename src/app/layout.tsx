@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { cn } from "@/lib/utils"
 import { Inter as FontSans } from "next/font/google"
 import { ThemeProvider } from "@/components/shared/theme-provider"
+import Providers from "@/components/shared/providers"
 
 import "./globals.css"
 
@@ -24,7 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "flex min-h-screen bg-background font-sans antialiased",
+          "flex min-h-screen justify-center bg-background font-sans antialiased",
           fontSans.variable
         )}
       >
@@ -34,7 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Providers>{children}</Providers>
         </ThemeProvider>
       </body>
     </html>
