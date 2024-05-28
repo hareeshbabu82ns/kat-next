@@ -38,14 +38,14 @@ const UserDetails = ({ session }: { session: AuthSession }) => {
   return (
     <Link href="/account">
       <div className="flex w-full items-center justify-between border-t border-border px-2 pt-4">
-        <div className="text-muted-foreground">
-          <p className="text-xs">{user.name ?? "John Doe"}</p>
-          <p className="pr-4 text-xs font-light">
-            {user.email ?? "john@doe.com"}
+        <div className="text-primary">
+          <p className="text-xs">{user.name ?? ""}</p>
+          <p className="pr-4 text-xs font-light text-blue-900 dark:text-blue-300">
+            {user.email ?? ""}
           </p>
         </div>
         <Avatar className="size-10">
-          <AvatarFallback className="border-2 border-border text-muted-foreground">
+          <AvatarFallback className="border-2 border-border text-black/90 dark:text-muted-foreground">
             {user.name
               ? user.name
                   ?.split(" ")
