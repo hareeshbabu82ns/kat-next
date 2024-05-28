@@ -1,4 +1,6 @@
+import Footer from "@/components/layout/Footer"
 import MountainIcon from "@/components/layout/MountainIcon"
+import Timings from "@/components/layout/Timings"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
@@ -13,19 +15,26 @@ export default function Home() {
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <Button asChild variant="link">
-            <Link href="#features">Features</Link>
+            <Link href="#timings">Timings</Link>
           </Button>
           <Button asChild variant="link">
             <Link href="/sign-in">Sign In</Link>
           </Button>
         </nav>
       </header>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <h1 className="text-center text-6xl font-bold">
-          Welcome to Karumari Amman Temple
+      <main className="flex flex-1 flex-col items-center gap-8 pt-10">
+        <h1 className="text-center text-lg font-bold md:text-3xl lg:text-6xl">
+          Calgary Srithevi Karumariamman Hindu Temple
         </h1>
-        <Image src="/next.svg" alt="Next.js Logo" width={300} height={300} />
+        <Image
+          src="/kat-logo.png"
+          alt="Next.js Logo"
+          width={500}
+          height={300}
+        />
+        <Timings />
       </main>
+      <Footer />
     </div>
   )
 }

@@ -4,13 +4,14 @@ import { DefaultSession, getServerSession, NextAuthOptions } from "next-auth"
 import { redirect } from "next/navigation"
 import { env } from "@/lib/env.mjs"
 import GoogleProvider from "next-auth/providers/google"
-import GithubProvider from "next-auth/providers/github"
+// import GithubProvider from "next-auth/providers/github"
 import { Adapter } from "next-auth/adapters"
 
 declare module "next-auth" {
   interface Session {
     user: DefaultSession["user"] & {
       id: string
+      isAdmin?: boolean
     }
   }
 }
@@ -21,6 +22,7 @@ export type AuthSession = {
       id: string
       name?: string
       email?: string
+      isAdmin?: boolean
     }
   } | null
 }
@@ -30,6 +32,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session: ({ session, user }) => {
       session.user.id = user.id
+      session.user.isAdmin = (user as any)?.isAdmin || false
       return session
     },
   },

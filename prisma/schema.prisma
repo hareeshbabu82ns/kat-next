@@ -10,7 +10,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Track Items Schema
+// App Items Schema
+
+model Events {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String?
+  price       Float
+  duration    Int      @default(10) // in minutes
+  numOfSeats  Int      @default(1)
+  thumbnail   String?
+  dateFrom    DateTime @default(now())
+  dateTo      DateTime @default(now())
+}
 
 // User Management Schema
 model Account {
@@ -48,6 +60,7 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  isAdmin       Boolean   @default(false)
   accounts      Account[]
   sessions      Session[]
 }

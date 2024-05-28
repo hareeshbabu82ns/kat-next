@@ -11,7 +11,7 @@ export default async function Account() {
       <div className="space-y-4">
         <UserSettings session={session} />
       </div>
-      <div className="hidden rounded-sm border p-4 shadow-sm">
+      <div className=" rounded-sm border p-4 shadow-sm">
         <code className="whitespace-break-spaces break-all">
           {JSON.stringify(session, null, 2)}
         </code>
