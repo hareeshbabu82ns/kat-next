@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/shared/theme-provider"
 import Providers from "@/components/shared/providers"
 
 import "./globals.css"
+import { siteConfig } from "@/config/site"
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -12,8 +13,25 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-  title: "Karumariamman Temple",
-  description: "Sri Calgary Karumariamman Temple",
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: ["Calgary", "Karumariamman", "Temple"],
+  authors: [
+    {
+      name: "Hareesh Polla",
+      url: "https://hareeshpolla.com/",
+    },
+  ],
+  creator: "hareeshpolla",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/pwa-64x64.png",
+    apple: "/apple-touch-icon-180x180.png",
+  },
+  manifest: `/site.webmanifest`,
 }
 
 export default function RootLayout({
@@ -23,6 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head />
       <body
         className={cn(
           "flex min-h-screen justify-center bg-background font-sans antialiased",

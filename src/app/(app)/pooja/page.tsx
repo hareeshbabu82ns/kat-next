@@ -14,7 +14,7 @@ export default async function Pooja() {
 
   return (
     <main className="flex flex-col">
-      <PageHeader title="Pooja">
+      <PageHeader title="Pooja" showBackButton={false}>
         <div>
           {session?.user.isAdmin && (
             <Link

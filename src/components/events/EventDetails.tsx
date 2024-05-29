@@ -1,6 +1,8 @@
 import { Events } from "@prisma/client"
 import { format } from "date-fns"
 import React from "react"
+import Markdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
 interface EventDetailsProps {
   data: Events
@@ -44,7 +46,9 @@ const EventDetails = ({ data }: EventDetailsProps) => {
         </table>
       </div>
       <div className="container col-span-2">
-        <pre>{data.description}</pre>
+        <div className={`flex-1 leading-8 tracking-wider antialiased`}>
+          <Markdown remarkPlugins={[remarkGfm]}>{data.description}</Markdown>
+        </div>
       </div>
     </div>
   )
