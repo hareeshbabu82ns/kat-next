@@ -18,7 +18,7 @@ model Events {
   description String?
   price       Float
   duration    Int      @default(10) // in minutes
-  numOfSeats  Int      @default(1)
+  numOfSeats  Int      @default(1) // 0 for unlimited
   thumbnail   String?
   dateFrom    DateTime @default(now())
   dateTo      DateTime @default(now())
