@@ -11,6 +11,7 @@
     "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx}\"",
     "prettier:fix": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "postinstall": "prisma generate",
     "db:gen": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio"
