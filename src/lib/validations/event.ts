@@ -1,4 +1,5 @@
 import * as z from "zod"
+import { siteConfig } from "@/config/site"
 
 export const EventSchema = z.object({
   id: z.string(),
@@ -7,7 +8,7 @@ export const EventSchema = z.object({
   price: z.coerce.number().min(5).default(0),
   duration: z.coerce.number().optional().default(10), // in minutes
   numOfSeats: z.coerce.number().optional().default(0), // 0 means unlimited
-  thumbnail: z.string().default("/kat-logo.png").optional(),
+  thumbnail: z.string().default(siteConfig.defaultEventImg).optional(),
   dateFrom: z.date(),
   dateTo: z.date(),
 })

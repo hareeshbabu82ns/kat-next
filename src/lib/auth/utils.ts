@@ -1,17 +1,19 @@
-import { db } from "@/lib/db/index"
 import { PrismaAdapter } from "@auth/prisma-adapter"
-import { DefaultSession, getServerSession, NextAuthOptions } from "next-auth"
 import { redirect } from "next/navigation"
-import { env } from "@/lib/env.mjs"
-import GoogleProvider from "next-auth/providers/google"
+import { DefaultSession, getServerSession, NextAuthOptions } from "next-auth"
 // import GithubProvider from "next-auth/providers/github"
 import { Adapter } from "next-auth/adapters"
+import GoogleProvider from "next-auth/providers/google"
+import { siteConfig } from "@/config/site"
+import { db } from "@/lib/db/index"
+import { env } from "@/lib/env.mjs"
 
 declare module "next-auth" {
   interface Session {
     user: DefaultSession["user"] & {
       id: string
       isAdmin?: boolean
+      image?: string
     }
   }
 }
@@ -23,6 +25,7 @@ export type AuthSession = {
       name?: string
       email?: string
       isAdmin?: boolean
+      image?: string
     }
   } | null
 }
@@ -32,7 +35,10 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session: ({ session, user }) => {
       session.user.id = user.id
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       session.user.isAdmin = (user as any)?.isAdmin || false
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      session.user.image = (user as any)?.image || siteConfig.defaultUserImg
       return session
     },
   },

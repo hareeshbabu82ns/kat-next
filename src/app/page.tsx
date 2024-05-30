@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer"
 import MountainIcon from "@/components/layout/MountainIcon"
 import Timings from "@/components/layout/Timings"
 import { Button } from "@/components/ui/button"
+import { siteConfig } from "@/config/site"
 
 export default function Home() {
   return (
@@ -27,7 +28,7 @@ export default function Home() {
           Calgary Srithevi Karumariamman Hindu Temple
         </h1>
         <Image
-          src="/kat-logo.png"
+          src={siteConfig.defaultEventImg}
           alt="Next.js Logo"
           width={500}
           height={300}

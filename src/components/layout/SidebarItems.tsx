@@ -4,7 +4,7 @@ import { LucideIcon } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { additionalLinks, defaultLinks } from "@/config/nav"
+import { additionalLinks, getDefaultLinks } from "@/config/nav"
 import { cn } from "@/lib/utils"
 
 export interface SidebarLink {
@@ -13,10 +13,10 @@ export interface SidebarLink {
   icon: LucideIcon
 }
 
-const SidebarItems = () => {
+const SidebarItems = ({ isAdmin }: { isAdmin: boolean }) => {
   return (
     <>
-      <SidebarLinkGroup links={defaultLinks} />
+      <SidebarLinkGroup links={getDefaultLinks(isAdmin)} />
       {additionalLinks.length > 0
         ? additionalLinks.map((l) => (
             <SidebarLinkGroup
@@ -43,7 +43,6 @@ const SidebarLinkGroup = ({
 }) => {
   const fullPathname = usePathname()
   const pathname = "/" + fullPathname.split("/")[1]
-
   return (
     <div className={border ? "my-8 border-t border-border pt-4" : ""}>
       {title ? (

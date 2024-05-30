@@ -2,8 +2,12 @@
   "name": "Sri Karumariamman Temple",
   "short_name": "KAT",
   "start_url": "/",
+  "display": "standalone",
+  "background_color": "#869CB5",
   "lang": "en",
   "scope": "/",
+  "theme_color": "#324C69",
+  "display_override": ["standalone"],
   "icons": [
     { "src": "pwa-64x64.png", "sizes": "64x64", "type": "image/png" },
     {
@@ -17,15 +21,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
-    },
-    {
-      "src": "maskable-icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
     }
-  ],
-  "theme_color": "#324C69",
-  "background_color": "#869CB5",
-  "display": "standalone"
+  ]
 }

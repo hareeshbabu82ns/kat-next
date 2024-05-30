@@ -40,6 +40,7 @@ const FormInputText = ({
   maxLength,
   className,
   type,
+  disabled,
 }: FormInputTextProps) => {
   return (
     <FormField
@@ -59,6 +60,7 @@ const FormInputText = ({
               <Input
                 placeholder={label}
                 type={type}
+                disabled={disabled}
                 {...field}
                 onChange={customOnChange}
               />

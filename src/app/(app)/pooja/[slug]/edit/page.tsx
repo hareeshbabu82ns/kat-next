@@ -3,6 +3,7 @@ import React from "react"
 import { z } from "zod"
 import EventForm from "@/components/events/EventForm"
 import PageHeader from "@/components/layout/PageHeader"
+import { siteConfig } from "@/config/site"
 import { getUserAuth } from "@/lib/auth/utils"
 import { EventInputSchema } from "@/lib/validations/event"
 import { getEvent } from "../../actions"
@@ -28,7 +29,7 @@ const PoojaEditPage = async ({ params }: PoojaEditPageProps) => {
     price: event.price,
     duration: event.duration,
     numOfSeats: event.numOfSeats,
-    thumbnail: event.thumbnail || "/kat-logo.png",
+    thumbnail: event.thumbnail || siteConfig.defaultEventImg,
     dateFrom: event.dateFrom,
     dateTo: event.dateTo,
   }

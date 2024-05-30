@@ -1,9 +1,9 @@
-import type { Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
-import tailwindAnimate from "tailwindcss-animate";
-import containerQueryPlugin from "@tailwindcss/container-queries";
+import type { Config } from "tailwindcss"
+import { fontFamily } from "tailwindcss/defaultTheme"
+import tailwindAnimate from "tailwindcss-animate"
+import containerQueryPlugin from "@tailwindcss/container-queries"
 
-import twScrollbarPluginWithOptions from "./src/lib/plugins/tw-scroll-bar-plugin";
+import twScrollbarPluginWithOptions from "./src/lib/plugins/tw-scroll-bar-plugin"
 
 const twScrollbarPlugin = twScrollbarPluginWithOptions({
   track: {
@@ -14,7 +14,7 @@ const twScrollbarPlugin = twScrollbarPluginWithOptions({
     background: "hsl(var(--thumb-background))",
     darkBackground: "hsl(var(--thumb-background))",
   },
-});
+})
 
 const config = {
   darkMode: ["class"],
@@ -102,6 +102,6 @@ const config = {
     },
   },
   plugins: [tailwindAnimate, containerQueryPlugin, twScrollbarPlugin],
-} satisfies Config;
+} satisfies Config
 
-export default config;
+export default config

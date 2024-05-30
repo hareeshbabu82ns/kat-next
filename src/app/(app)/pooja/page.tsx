@@ -1,11 +1,11 @@
+import Link from "next/link"
+import EventTile from "@/components/events/EventTile"
 import PageHeader from "@/components/layout/PageHeader"
+import { Icons } from "@/components/shared/icons"
 import { buttonVariants } from "@/components/ui/button"
 import { getUserAuth } from "@/lib/auth/utils"
 import { cn } from "@/lib/utils"
-import Link from "next/link"
 import { getEvents } from "./actions"
-import EventTile from "@/components/events/EventTile"
-import { Icons } from "@/components/shared/icons"
 
 export default async function Pooja() {
   const { session } = await getUserAuth()
@@ -35,6 +35,8 @@ export default async function Pooja() {
                 thumbnail={event.thumbnail || ""}
                 dateFrom={event.dateFrom}
                 dateTo={event.dateTo}
+                price={event.price}
+                duration={event.duration}
               />
             </Link>
           ))}

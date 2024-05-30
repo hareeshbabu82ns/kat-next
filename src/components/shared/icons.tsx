@@ -7,6 +7,7 @@ import {
   ChevronRight,
   Command,
   CreditCard,
+  Mail as eMail,
   File,
   FileText,
   HelpCircle,
@@ -18,6 +19,7 @@ import {
   Moon,
   MoreVertical,
   Pencil,
+  Phone,
   Pizza,
   Plus,
   RefreshCcw,
@@ -27,6 +29,7 @@ import {
   TimerResetIcon,
   Trash2 as Trash,
   User,
+  Users2 as Users,
   X,
 } from "lucide-react"
 
@@ -34,6 +37,9 @@ export type Icon = typeof LucideIcon
 
 export const Icons = {
   logo: Command,
+  users: Users,
+  phone: Phone,
+  email: eMail,
   save: SaveIcon,
   refresh: RefreshCcw,
   reset: TimerResetIcon,

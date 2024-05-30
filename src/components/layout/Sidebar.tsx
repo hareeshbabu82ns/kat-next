@@ -1,8 +1,9 @@
 import Link from "next/link"
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 import { AuthSession, getUserAuth } from "@/lib/auth/utils"
+import { avatarAltName } from "@/lib/utils"
 import AppTitleLogo from "./AppTitleLogo"
 import SidebarItems from "./SidebarItems"
 
@@ -17,7 +18,7 @@ const Sidebar = async () => {
           <AppTitleLogo />
         </div>
         <div className="py-4 pl-4 pr-6 md:py-6">
-          <SidebarItems />
+          <SidebarItems isAdmin={session.session.user.isAdmin || false} />
         </div>
       </div>
       <div className="p-2">
@@ -36,7 +37,7 @@ const UserDetails = ({ session }: { session: AuthSession }) => {
   if (!user?.name || user.name.length == 0) return null
 
   return (
-    <Link href="/account">
+    <Link href={`/users/${user.id}`}>
       <div className="flex w-full items-center justify-between border-t border-border px-2 pt-4">
         <div className="text-primary">
           <p className="text-xs">{user.name ?? ""}</p>
@@ -45,14 +46,8 @@ const UserDetails = ({ session }: { session: AuthSession }) => {
           </p>
         </div>
         <Avatar className="size-10">
-          <AvatarFallback className="border-2 border-border text-black/90 dark:text-muted-foreground">
-            {user.name
-              ? user.name
-                  ?.split(" ")
-                  .map((word: string) => word[0].toUpperCase())
-                  .join("")
-              : "~"}
-          </AvatarFallback>
+          <AvatarImage src={user.image || ""} alt="Avatar" />
+          <AvatarFallback>{avatarAltName(user.name || "~")}</AvatarFallback>
         </Avatar>
       </div>
     </Link>

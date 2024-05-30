@@ -4,6 +4,8 @@ import { format } from "date-fns"
 import React from "react"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
+import { siteConfig } from "@/config/site"
+import { formatCurrency, formatDuration } from "@/lib/utils"
 
 interface EventDetailsProps {
   data: Events
@@ -13,7 +15,10 @@ const EventDetails = ({ data }: EventDetailsProps) => {
     <div className="grid w-full grid-cols-2 gap-6">
       <div className="col-span-2 md:col-span-1">
         <div className="flex h-96 justify-center">
-          <img src={data.thumbnail || "/kat-logo.png"} alt={data.title} />
+          <img
+            src={data.thumbnail || siteConfig.defaultEventImg}
+            alt={data.title}
+          />
         </div>
       </div>
       <div className="col-span-2 flex w-full grid-cols-subgrid justify-center space-y-2 md:col-span-1  md:justify-normal">
@@ -23,13 +28,13 @@ const EventDetails = ({ data }: EventDetailsProps) => {
               <td className="min-w-[120px] text-sm text-muted-foreground">
                 Amount (CAD)$:
               </td>
-              <td className="font-bold">{data.price}</td>
+              <td className="font-bold">{formatCurrency(data.price)}</td>
             </tr>
             <tr>
               <td className="min-w-[150px] text-sm text-muted-foreground">
-                Duration (minutes):
+                Duration:
               </td>
-              <td className="font-bold">{data.duration}</td>
+              <td className="font-bold">{formatDuration(data.duration)}</td>
             </tr>
             <tr>
               <td className="min-w-[100px] text-sm text-muted-foreground">

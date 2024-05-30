@@ -6,6 +6,7 @@ import {
 } from "lucide-react"
 import React from "react"
 import { siteConfig } from "@/config/site"
+import { formatPhoneNumber } from "@/lib/utils"
 import { Icons } from "../shared/icons"
 
 // Ref: https://flowbite.com/docs/components/footer/
@@ -45,7 +46,9 @@ const Footer = () => {
             className="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
           >
             <PhoneIcon className="size-4" />
-            <span className="sr-only">Telephone: {siteConfig.links.tel}</span>
+            <span className="sr-only">
+              Telephone: {formatPhoneNumber(siteConfig.links.tel)}
+            </span>
           </a>
           <a
             href={siteConfig.url}
