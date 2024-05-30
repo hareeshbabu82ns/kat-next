@@ -1,12 +1,12 @@
-import React from "react"
 import {
-  Mail as MailIcon,
-  Phone as PhoneIcon,
-  Map as MapIcon,
   Globe2 as GlobeIcon,
+  Mail as MailIcon,
+  Map as MapIcon,
+  Phone as PhoneIcon,
 } from "lucide-react"
-import { Icons } from "../shared/icons"
+import React from "react"
 import { siteConfig } from "@/config/site"
+import { Icons } from "../shared/icons"
 
 // Ref: https://flowbite.com/docs/components/footer/
 

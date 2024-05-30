@@ -1,10 +1,10 @@
 import Link from "next/link"
 
-import SidebarItems from "./SidebarItems"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 
 import { AuthSession, getUserAuth } from "@/lib/auth/utils"
 import AppTitleLogo from "./AppTitleLogo"
+import SidebarItems from "./SidebarItems"
 
 const Sidebar = async () => {
   const session = await getUserAuth()

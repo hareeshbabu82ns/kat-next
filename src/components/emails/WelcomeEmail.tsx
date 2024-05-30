@@ -1,7 +1,5 @@
-import * as React from "react";
-
 interface EmailTemplateProps {
-  firstName: string;
+  firstName: string
 }
 
 export const WelcomeEmail: React.FC<Readonly<EmailTemplateProps>> = ({
@@ -24,4 +22,4 @@ export const WelcomeEmail: React.FC<Readonly<EmailTemplateProps>> = ({
     <hr />
     <p>Sent with help from Resend and TerabitsIO 😊</p>
   </div>
-);
+)

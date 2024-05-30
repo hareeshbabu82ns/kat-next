@@ -1,8 +1,8 @@
 "use server"
 
+import { revalidatePath } from "next/cache"
 import { getUserAuth } from "@/lib/auth/utils"
 import { db } from "@/lib/db"
-import { revalidatePath } from "next/cache"
 
 export async function updateUser(body: { name?: string; email?: string }) {
   const { session } = await getUserAuth()

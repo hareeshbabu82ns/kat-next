@@ -1,73 +1,73 @@
 // ref - https://github.com/gradints/tailwindcss-scrollbar/blob/main/README.md
-import { withOptions } from "tailwindcss/plugin";
+import { withOptions } from "tailwindcss/plugin"
 import {
   CSSRuleObject,
   DarkModeConfig,
   PluginAPI,
-} from "tailwindcss/types/config";
+} from "tailwindcss/types/config"
 
 interface StyleOptions {
-  background?: string;
-  darkBackground?: string;
+  background?: string
+  darkBackground?: string
 }
 interface PluginOptions {
-  size?: string;
-  track?: StyleOptions;
-  thumb?: StyleOptions;
-  hover?: StyleOptions;
+  size?: string
+  track?: StyleOptions
+  thumb?: StyleOptions
+  hover?: StyleOptions
 }
 
-const themeKey = "scrollbar"; // theme.scrollbar
-const darkClass = "dark";
+const themeKey = "scrollbar" // theme.scrollbar
+const darkClass = "dark"
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const omit = (key: string, { [key]: _, ...obj }) => obj;
+const omit = (key: string, { [key]: _, ...obj }) => obj
 
 /**
  * Handle plugin.withOptions and theme.scrollbar.DEFAULT
  */
 const getDefaultStyle = (options: PluginOptions, pluginAPI: PluginAPI) => {
-  const { theme, config } = pluginAPI;
+  const { theme, config } = pluginAPI
 
   const getSize = () => {
-    return options?.size ?? theme(`${themeKey}.DEFAULT.size`, "5px");
-  };
+    return options?.size ?? theme(`${themeKey}.DEFAULT.size`, "5px")
+  }
   const getStyleTrack = () => {
-    const background = "#f1f1f1"; // default
-    const fromConfig = theme(`${themeKey}.DEFAULT.track`, {}); // with tailwind.config.js
-    const fromOptions = options?.track ?? {}; // with plugin options
+    const background = "#f1f1f1" // default
+    const fromConfig = theme(`${themeKey}.DEFAULT.track`, {}) // with tailwind.config.js
+    const fromOptions = options?.track ?? {} // with plugin options
 
-    const finalConfig = { background, ...fromConfig, ...fromOptions };
+    const finalConfig = { background, ...fromConfig, ...fromOptions }
 
     if (!finalConfig.darkBackground) {
-      finalConfig.darkBackground = finalConfig.background;
+      finalConfig.darkBackground = finalConfig.background
     }
 
-    return finalConfig;
-  };
+    return finalConfig
+  }
   const getStyleThumb = () => {
-    const background = "#c1c1c1";
-    const fromConfig = theme(`${themeKey}.DEFAULT.thumb`, {}); // with tailwind.config.js
-    const fromOptions = options?.thumb ?? {}; // with plugin options
+    const background = "#c1c1c1"
+    const fromConfig = theme(`${themeKey}.DEFAULT.thumb`, {}) // with tailwind.config.js
+    const fromOptions = options?.thumb ?? {} // with plugin options
 
-    const finalConfig = { background, ...fromConfig, ...fromOptions };
+    const finalConfig = { background, ...fromConfig, ...fromOptions }
 
-    return finalConfig;
-  };
+    return finalConfig
+  }
   const getStyleThumbHover = () => {
-    const background = "#a8a8a8";
-    const fromConfig = theme(`${themeKey}.DEFAULT.hover`, {}); // with tailwind.config.js
-    const fromOptions = options?.hover ?? {}; // with plugin options
+    const background = "#a8a8a8"
+    const fromConfig = theme(`${themeKey}.DEFAULT.hover`, {}) // with tailwind.config.js
+    const fromOptions = options?.hover ?? {} // with plugin options
 
-    const finalConfig = { background, ...fromConfig, ...fromOptions };
+    const finalConfig = { background, ...fromConfig, ...fromOptions }
 
-    return finalConfig;
-  };
+    return finalConfig
+  }
 
-  const size = getSize();
-  const track = getStyleTrack();
-  const thumb = getStyleThumb();
-  const hover = getStyleThumbHover();
+  const size = getSize()
+  const track = getStyleTrack()
+  const thumb = getStyleThumb()
+  const hover = getStyleThumbHover()
 
   const styles: CSSRuleObject[] = [
     {
@@ -79,7 +79,7 @@ const getDefaultStyle = (options: PluginOptions, pluginAPI: PluginAPI) => {
       "::-webkit-scrollbar-thumb": omit("darkBackground", thumb),
       "::-webkit-scrollbar-thumb:hover": omit("darkBackground", hover),
     },
-  ];
+  ]
 
   const dark = {
     "::-webkit-scrollbar-track": {
@@ -91,7 +91,7 @@ const getDefaultStyle = (options: PluginOptions, pluginAPI: PluginAPI) => {
     "::-webkit-scrollbar-thumb:hover": {
       background: hover.darkBackground ?? hover.background,
     },
-  };
+  }
   const light = {
     "::-webkit-scrollbar-track": {
       background: track.background,
@@ -102,54 +102,54 @@ const getDefaultStyle = (options: PluginOptions, pluginAPI: PluginAPI) => {
     "::-webkit-scrollbar-thumb:hover": {
       background: hover.background,
     },
-  };
+  }
 
   if ((config("darkMode") as Partial<DarkModeConfig>) === "media") {
     styles.push({
       "@media (prefers-color-scheme: dark)": dark,
       "@media (prefers-color-scheme: light)": light,
-    });
+    })
   } else {
     styles.push({
       [`.${darkClass}`]: dark,
-    });
+    })
   }
 
-  return styles;
-};
+  return styles
+}
 
 /**
  * Handle theme.scrollbar.<any key>
  */
 const getCustomStyles = (pluginAPI: PluginAPI) => {
-  const { theme, config } = pluginAPI;
+  const { theme, config } = pluginAPI
 
   const styles = Object.entries(theme(themeKey, {}))
     .filter(([key]) => key !== "DEFAULT")
     .map(([key, val]) => {
-      const className = `.${themeKey}-${key}`;
+      const className = `.${themeKey}-${key}`
 
-      const { size, track, thumb, hover } = val as PluginOptions;
+      const { size, track, thumb, hover } = val as PluginOptions
 
       if (!size) {
         throw new Error(
           `[@gradin/tailwindcss-scrollbar] theme.${themeKey}.${key} should have property [size].`
-        );
+        )
       }
       if (!track) {
         throw new Error(
           `[@gradin/tailwindcss-scrollbar] theme.${themeKey}.${key} should have property [size].`
-        );
+        )
       }
       if (!thumb) {
         throw new Error(
           `[@gradin/tailwindcss-scrollbar] theme.${themeKey}.${key} should have property [size].`
-        );
+        )
       }
       if (!hover) {
         throw new Error(
           `[@gradin/tailwindcss-scrollbar] theme.${themeKey}.${key} should have property [size].`
-        );
+        )
       }
 
       return {
@@ -169,17 +169,17 @@ const getCustomStyles = (pluginAPI: PluginAPI) => {
           "darkBackground",
           hover
         ),
-      } as CSSRuleObject;
-    });
+      } as CSSRuleObject
+    })
 
   const dark = Object.entries(theme(themeKey, {}))
     .filter(([key]) => key !== "DEFAULT")
     .map(([key, val]) => {
-      const className = `.${themeKey}-${key}`;
-      const value = val as PluginOptions;
-      const track = value.track ?? {};
-      const thumb = value.thumb ?? {};
-      const hover = value.hover ?? {};
+      const className = `.${themeKey}-${key}`
+      const value = val as PluginOptions
+      const track = value.track ?? {}
+      const thumb = value.thumb ?? {}
+      const hover = value.hover ?? {}
 
       return {
         [`${className}::-webkit-scrollbar-track`]: {
@@ -191,16 +191,16 @@ const getCustomStyles = (pluginAPI: PluginAPI) => {
         [`${className}::-webkit-scrollbar-thumb:hover`]: {
           background: hover.darkBackground ?? hover.background,
         },
-      };
-    });
+      }
+    })
   const light = Object.entries(theme(themeKey, {}))
     .filter(([key]) => key !== "DEFAULT")
     .map(([key, val]) => {
-      const className = `.${themeKey}-${key}`;
-      const value = val as PluginOptions;
-      const track = value.track ?? {};
-      const thumb = value.thumb ?? {};
-      const hover = value.hover ?? {};
+      const className = `.${themeKey}-${key}`
+      const value = val as PluginOptions
+      const track = value.track ?? {}
+      const thumb = value.thumb ?? {}
+      const hover = value.hover ?? {}
 
       return {
         [`${className}::-webkit-scrollbar-track`]: {
@@ -212,24 +212,24 @@ const getCustomStyles = (pluginAPI: PluginAPI) => {
         [`${className}::-webkit-scrollbar-thumb:hover`]: {
           background: hover.background,
         },
-      };
-    });
+      }
+    })
 
   if ((config("darkMode") as Partial<DarkModeConfig>) === "media") {
     styles.push({
       "@media (prefers-color-scheme: dark)": dark,
       "@media (prefers-color-scheme: light)": light,
-    } as unknown as CSSRuleObject);
+    } as unknown as CSSRuleObject)
   } else {
     dark.forEach((s) => {
       styles.push({
         [`.${darkClass}`]: s,
-      } as unknown as CSSRuleObject);
-    });
+      } as unknown as CSSRuleObject)
+    })
   }
 
-  return styles;
-};
+  return styles
+}
 
 const scrollbarNoneStyle: CSSRuleObject[] = [
   {
@@ -243,16 +243,16 @@ const scrollbarNoneStyle: CSSRuleObject[] = [
       display: "none" /* Chrome, Safari, Opera */,
     },
   },
-];
+]
 
 export default withOptions<PluginOptions>(function (options) {
   return function (pluginAPI) {
-    const { addBase, addUtilities } = pluginAPI;
+    const { addBase, addUtilities } = pluginAPI
 
-    addBase(getDefaultStyle(options, pluginAPI));
+    addBase(getDefaultStyle(options, pluginAPI))
 
-    addUtilities(getCustomStyles(pluginAPI));
+    addUtilities(getCustomStyles(pluginAPI))
 
-    addUtilities(scrollbarNoneStyle);
-  };
-});
+    addUtilities(scrollbarNoneStyle)
+  }
+})

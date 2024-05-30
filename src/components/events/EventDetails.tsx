@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Events } from "@prisma/client"
 import { format } from "date-fns"
 import React from "react"

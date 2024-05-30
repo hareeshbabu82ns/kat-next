@@ -1,12 +1,11 @@
 "use client"
 
+import { LucideIcon } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { LucideIcon } from "lucide-react"
-
+import { additionalLinks, defaultLinks } from "@/config/nav"
 import { cn } from "@/lib/utils"
-import { defaultLinks, additionalLinks } from "@/config/nav"
 
 export interface SidebarLink {
   title: string

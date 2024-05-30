@@ -1,6 +1,6 @@
+import { ClassValue } from "clsx"
 import MountainIcon from "@/components/layout/MountainIcon"
 import { cn } from "@/lib/utils"
-import { ClassValue } from "clsx"
 
 const AppTitleLogo = ({ className }: { className?: ClassValue }) => {
   return (

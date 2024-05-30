@@ -1,8 +1,8 @@
 "use server"
 
+import { z } from "zod"
 import { db } from "@/lib/db"
 import { EventInputSchema } from "@/lib/validations/event"
-import { z } from "zod"
 
 export async function getEvent(id: string) {
   const event = await db.events.findUnique({ where: { id } })

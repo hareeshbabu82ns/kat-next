@@ -1,4 +1,9 @@
+import { addDays, format } from "date-fns"
+import { CalendarIcon } from "lucide-react"
 import { Control } from "react-hook-form"
+import { cn } from "@/lib/utils"
+import { Button } from "../ui/button"
+import { Calendar } from "../ui/calendar"
 import {
   FormControl,
   FormDescription,
@@ -8,12 +13,7 @@ import {
   FormMessage,
 } from "../ui/form"
 import { InputProps } from "../ui/input"
-import { cn } from "@/lib/utils"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
-import { CalendarIcon } from "lucide-react"
-import { Button } from "../ui/button"
-import { format, addDays } from "date-fns"
-import { Calendar } from "../ui/calendar"
 import {
   Select,
   SelectContent,
@@ -61,7 +61,7 @@ const FormInputDate = ({
                     ) : (
                       <span>{label}</span>
                     )}
-                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    <CalendarIcon className="ml-auto size-4 opacity-50" />
                   </Button>
                 </FormControl>
               </PopoverTrigger>

@@ -1,11 +1,11 @@
 "use client"
-import { AccountCard, AccountCardFooter, AccountCardBody } from "./AccountCard"
+import { useMutation } from "@tanstack/react-query"
+import { useState } from "react"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { useMutation } from "@tanstack/react-query"
+import { AccountCard, AccountCardBody, AccountCardFooter } from "./AccountCard"
 import { updateUser } from "./actions"
-import { toast } from "sonner"
-import { useState } from "react"
 
 export default function UpdateNameCard({ name }: { name: string }) {
   const [userName, setUserName] = useState(name ?? "")

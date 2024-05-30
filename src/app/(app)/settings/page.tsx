@@ -1,17 +1,17 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
+import { useTheme } from "next-themes"
+import { Button } from "@/components/ui/button"
 
 export default function Page() {
-  const { setTheme } = useTheme();
+  const { setTheme } = useTheme()
   return (
     <div>
       <h1 className="my-4 text-2xl font-semibold">Settings</h1>
       <div className="my-4 space-y-4">
         <div>
           <h3 className="text-lg font-medium">Appearance</h3>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-sm text-muted-foreground">
             Customize the appearance of the app. Automatically switch between
             day and night themes.
           </p>
@@ -23,7 +23,7 @@ export default function Page() {
           onClick={() => setTheme("light")}
         >
           <div className="flex flex-col">
-            <div className="border-muted hover:border-accent items-center rounded-md border-2 p-1">
+            <div className="items-center rounded-md border-2 border-muted p-1 hover:border-accent">
               <div className="space-y-2 rounded-sm bg-[#ecedef] p-2">
                 <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
                   <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]" />
@@ -51,7 +51,7 @@ export default function Page() {
           className="size-fit"
         >
           <div className="flex flex-col">
-            <div className="border-muted bg-popover hover:bg-accent hover:text-accent-foreground items-center rounded-md border-2 p-1">
+            <div className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-2 rounded-sm bg-neutral-950 p-2">
                 <div className="space-y-2 rounded-md bg-neutral-800 p-2 shadow-sm">
                   <div className="h-2 w-[80px] rounded-lg bg-neutral-400" />
@@ -79,7 +79,7 @@ export default function Page() {
           className="size-fit"
         >
           <div className="flex flex-col">
-            <div className="border-muted bg-popover hover:bg-accent hover:text-accent-foreground items-center rounded-md border-2 p-1">
+            <div className="items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground">
               <div className="space-y-2 rounded-sm bg-neutral-300 p-2">
                 <div className="space-y-2 rounded-md bg-neutral-600 p-2 shadow-sm">
                   <div className="h-2 w-[80px] rounded-lg bg-neutral-400" />
@@ -102,5 +102,5 @@ export default function Page() {
         </Button>
       </div>
     </div>
-  );
+  )
 }

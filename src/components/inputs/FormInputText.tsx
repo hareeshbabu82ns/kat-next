@@ -1,4 +1,5 @@
 import { Control } from "react-hook-form"
+import { cn } from "@/lib/utils"
 import {
   FormControl,
   FormDescription,
@@ -8,7 +9,6 @@ import {
   FormMessage,
 } from "../ui/form"
 import { Input, InputProps } from "../ui/input"
-import { cn } from "@/lib/utils"
 
 const handleMaxLengthChange = (
   event: { target: { value: string } },

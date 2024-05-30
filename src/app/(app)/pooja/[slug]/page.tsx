@@ -1,13 +1,13 @@
-import { notFound, useParams } from "next/navigation"
+import Link from "next/link"
+import { notFound } from "next/navigation"
 import React from "react"
-import { getEvent } from "../actions"
 import EventDetails from "@/components/events/EventDetails"
 import PageHeader from "@/components/layout/PageHeader"
+import { Icons } from "@/components/shared/icons"
+import { buttonVariants } from "@/components/ui/button"
 import { getUserAuth } from "@/lib/auth/utils"
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import Link from "next/link"
-import { Icons } from "@/components/shared/icons"
+import { getEvent } from "../actions"
 
 interface PoojaDetailsPageProps {
   params: {

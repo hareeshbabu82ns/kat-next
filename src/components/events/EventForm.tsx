@@ -1,24 +1,25 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
-import { EventInputSchema } from "@/lib/validations/event"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
 import React from "react"
 import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { Form } from "../ui/form"
-import FormInputText from "../inputs/FormInputText"
-import { Button } from "../ui/button"
-import { Icons } from "../shared/icons"
-import FormInputTextArea from "../inputs/FormInputTextArea"
-import FormInputDate from "../inputs/FormInputDate"
 import {
   createEvent,
-  updateEvent,
   deleteEvent,
+  updateEvent,
 } from "@/app/(app)/pooja/actions"
-import { useToast } from "../ui/use-toast"
-import { useRouter } from "next/navigation"
+import { EventInputSchema } from "@/lib/validations/event"
+import FormInputDate from "../inputs/FormInputDate"
+import FormInputText from "../inputs/FormInputText"
+import FormInputTextArea from "../inputs/FormInputTextArea"
 import { DeleteConfirmDlgTrigger } from "../shared/DeleteConfirmDlgTrigger"
+import { Icons } from "../shared/icons"
+import { Button } from "../ui/button"
+import { Form } from "../ui/form"
+import { useToast } from "../ui/use-toast"
 
 interface EventFormProps {
   eventId?: string
@@ -31,7 +32,7 @@ interface EventFormProps {
 const EventForm = ({
   eventId,
   data,
-  onSubmit: onFormSubmit,
+  // onSubmit: onFormSubmit,
   updating,
 }: EventFormProps) => {
   const { toast } = useToast()

@@ -1,12 +1,12 @@
-import { checkAuth } from "@/lib/auth/utils"
-import { Toaster } from "@/components/ui/sonner"
-import Navbar from "@/components/layout/Navbar"
-import Sidebar from "@/components/layout/Sidebar"
-import NextAuthProvider from "@/lib/auth/Provider"
-import { cn } from "@/lib/utils"
 import { type ClassValue } from "clsx"
 import AppTitleLogo from "@/components/layout/AppTitleLogo"
+import Navbar from "@/components/layout/Navbar"
+import Sidebar from "@/components/layout/Sidebar"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
+import { Toaster } from "@/components/ui/sonner"
+import NextAuthProvider from "@/lib/auth/Provider"
+import { checkAuth } from "@/lib/auth/utils"
+import { cn } from "@/lib/utils"
 export default async function AppLayout({
   children,
 }: {

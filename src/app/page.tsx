@@ -1,9 +1,9 @@
+import Image from "next/image"
+import Link from "next/link"
 import Footer from "@/components/layout/Footer"
 import MountainIcon from "@/components/layout/MountainIcon"
 import Timings from "@/components/layout/Timings"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import Link from "next/link"
 
 export default function Home() {
   return (

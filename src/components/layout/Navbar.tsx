@@ -1,12 +1,12 @@
 "use client"
 
+import { MenuIcon } from "lucide-react"
 import { usePathname } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
 
-import ThemeToggle from "../shared/theme-toggle"
 import { SheetTrigger } from "@/components/ui/sheet"
-import { MenuIcon } from "lucide-react"
+import ThemeToggle from "../shared/theme-toggle"
 
 export default function Navbar({
   children,
@@ -19,7 +19,6 @@ export default function Navbar({
   sidebarTrigger?: boolean
   themeToggle?: boolean
 }) {
-  const pathname = usePathname()
   return (
     <header className="border-b-1 flex h-14 items-center justify-between bg-muted p-2 text-muted-foreground md:px-4">
       <div className="flex items-center space-x-4">{children}</div>

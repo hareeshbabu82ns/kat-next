@@ -1,6 +1,5 @@
 import {
   AlertTriangle,
-  RefreshCcw,
   ArrowLeft,
   ArrowRight,
   Check,
@@ -14,20 +13,21 @@ import {
   Image,
   Laptop,
   Loader2,
+  type Icon as LucideIcon,
   LucideProps,
   Moon,
   MoreVertical,
+  Pencil,
   Pizza,
   Plus,
+  RefreshCcw,
+  SaveIcon,
   Settings,
   SunMedium,
+  TimerResetIcon,
   Trash2 as Trash,
   User,
   X,
-  TimerResetIcon,
-  SaveIcon,
-  type Icon as LucideIcon,
-  Pencil,
 } from "lucide-react"
 
 export type Icon = typeof LucideIcon
