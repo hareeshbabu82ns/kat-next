@@ -1,4 +1,5 @@
-import { addDays, format } from "date-fns"
+// Ref: TimePicker: https://time.openstatus.dev
+import { addDays, addYears, format, subYears } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { Control } from "react-hook-form"
 import { cn } from "@/lib/utils"
@@ -21,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select"
+import { TimePicker } from "../ui/time-picker"
 
 interface FormInputDateProps extends InputProps {
   name: string
@@ -29,6 +31,7 @@ interface FormInputDateProps extends InputProps {
   description?: string
   control: Control<any>
   className?: string
+  withTime?: boolean
 }
 
 const FormInputDate = ({
@@ -37,6 +40,7 @@ const FormInputDate = ({
   label,
   description,
   className,
+  withTime,
 }: FormInputDateProps) => {
   return (
     <FormField
@@ -86,10 +90,16 @@ const FormInputDate = ({
                   selected={field.value}
                   onSelect={field.onChange}
                   disabled={(date) =>
-                    date > new Date() || date < new Date("1900-01-01")
+                    date > addYears(new Date(), 10) ||
+                    date < subYears(new Date(), 1)
                   }
                   initialFocus
                 />
+                {withTime && (
+                  <div className="border-t border-border p-3">
+                    <TimePicker date={field.value} setDate={field.onChange} />
+                  </div>
+                )}
               </PopoverContent>
             </Popover>
             {description && <FormDescription>{description}</FormDescription>}

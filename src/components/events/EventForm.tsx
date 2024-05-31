@@ -46,7 +46,7 @@ const EventForm = ({
   const {
     getValues,
     reset,
-    formState: { errors, isDirty, dirtyFields },
+    formState: { isDirty, dirtyFields },
   } = form
 
   const [thumbnailValue] = getValues(["thumbnail"])
@@ -152,11 +152,13 @@ const EventForm = ({
               control={form.control}
               name="dateFrom"
               label="Date From"
+              withTime
             />
             <FormInputDate
               control={form.control}
               name="dateTo"
               label="Date To"
+              withTime
             />
           </div>
           <div className="col-span-2 space-y-2 md:col-span-1">
