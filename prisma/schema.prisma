@@ -13,15 +13,33 @@ datasource db {
 // App Items Schema
 
 model Events {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String?
   price       Float
-  duration    Int      @default(10) // in minutes
-  numOfSeats  Int      @default(1) // 0 for unlimited
+  duration    Int       @default(10) // in minutes
+  numOfSeats  Int       @default(1) // 0 for unlimited
   thumbnail   String?
-  dateFrom    DateTime @default(now())
-  dateTo      DateTime @default(now())
+  dateFrom    DateTime  @default(now())
+  dateTo      DateTime  @default(now())
+  Booking     Booking[]
+}
+
+model Booking {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  event      Events    @relation(fields: [eventId], references: [id])
+  eventId    String    @db.ObjectId
+  eventTitle String
+  user       User      @relation(fields: [userEmail], references: [email])
+  userEmail  String
+  userName   String
+  date       DateTime  @default(now())
+  confirmed  Boolean   @default(false)
+  paid       Boolean   @default(false)
+  paidAmount Float?
+  notes      String?
+  createdAt  DateTime? @default(now())
+  updatedAt  DateTime? @updatedAt
 }
 
 // User Management Schema
@@ -64,6 +82,7 @@ model User {
   telephone     String?
   accounts      Account[]
   sessions      Session[]
+  Booking       Booking[]
 }
 
 model VerificationToken {

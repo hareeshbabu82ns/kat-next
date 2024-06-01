@@ -1,10 +1,11 @@
-import SignIn from "@/components/auth/SignIn"
+import PageHeader from "@/components/layout/PageHeader"
+import Bookings from "./bookings"
 
 export default async function Home() {
   return (
-    <main className="my-4 space-y-4">
-      <h1 className="text-2xl font-semibold">Dashboard</h1>
-      <SignIn />
+    <main className="flex flex-col gap-2">
+      <PageHeader title="Dashboard" showBackButton={false} />
+      <Bookings />
     </main>
   )
 }

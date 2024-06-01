@@ -29,9 +29,11 @@ interface FormInputDateProps extends InputProps {
   label: string
   maxLength?: number
   description?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>
   className?: string
   withTime?: boolean
+  disabled?: boolean
 }
 
 const FormInputDate = ({
@@ -41,6 +43,7 @@ const FormInputDate = ({
   description,
   className,
   withTime,
+  disabled,
 }: FormInputDateProps) => {
   return (
     <FormField
@@ -59,6 +62,7 @@ const FormInputDate = ({
                       "w-full pl-3 text-left font-normal",
                       !field.value && "text-muted-foreground"
                     )}
+                    disabled={field.disabled || disabled}
                   >
                     {field.value ? (
                       format(field.value, "PPP")

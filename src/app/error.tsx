@@ -18,7 +18,7 @@ const ErrorPage = () => {
           </p>
           <Link
             className="mb-4 text-lg font-light text-blue-700 dark:text-blue-300"
-            href="/"
+            href="/dashboard"
           >
             Go back to home
           </Link>

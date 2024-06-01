@@ -4,6 +4,7 @@ import { z } from "zod"
 import { db } from "@/lib/db"
 import { EventInputSchema } from "@/lib/validations/event"
 
+// Event actions
 export async function getEvent(id: string) {
   const event = await db.events.findUnique({ where: { id } })
   return event

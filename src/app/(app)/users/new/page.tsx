@@ -20,7 +20,11 @@ const UserDetailsPage = async () => {
   return (
     <div className="flex flex-col gap-2">
       <PageHeader title={`User: New`} />
-      <UserForm sessionUserId={session?.user.id} data={defaultUserData} />
+      <UserForm
+        isAdmin={session?.user.isAdmin}
+        sessionUserId={session?.user.id}
+        data={defaultUserData}
+      />
     </div>
   )
 }

@@ -1,24 +1,15 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { signOut } from "next-auth/react"
+import { Button, ButtonProps } from "../ui/button"
 
-export default function SignOutBtn() {
-  const router = useRouter()
-  const handleSignOut = async () => {
-    const response = await fetch("/api/sign-out", {
-      method: "POST",
-      redirect: "manual",
-    })
-
-    if (response.status === 0) {
-      // redirected
-      // when using `redirect: "manual"`, response status 0 is returned
-      return router.refresh()
-    }
-  }
+export default function SignOutBtn({
+  children,
+  ...props
+}: ButtonProps & React.RefAttributes<HTMLButtonElement>) {
   return (
-    <button onClick={handleSignOut} className="w-full text-left">
-      Sign out
-    </button>
+    <Button {...props} onClick={() => signOut({ callbackUrl: "/" })}>
+      {children ? children : "Sign out"}
+    </Button>
   )
 }

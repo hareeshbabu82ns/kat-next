@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { createUser, deleteUser, updateUser } from "@/app/(app)/users/actions"
 import { UserInputSchema } from "@/lib/validations/user"
+import FormCheckbox from "../inputs/FormCheckbox"
 import FormInputText from "../inputs/FormInputText"
 import { DeleteConfirmDlgTrigger } from "../shared/DeleteConfirmDlgTrigger"
 import { Icons } from "../shared/icons"
@@ -16,6 +17,7 @@ import { Form } from "../ui/form"
 import { useToast } from "../ui/use-toast"
 
 interface UserFormProps {
+  isAdmin?: boolean
   sessionUserId?: string
   userId?: string
   data: z.infer<typeof UserInputSchema>
@@ -25,6 +27,7 @@ interface UserFormProps {
 }
 
 const UserForm = ({
+  isAdmin = false,
   sessionUserId,
   userId,
   data,
@@ -151,6 +154,12 @@ const UserForm = ({
               name="telephone"
               label="Telephone"
               type="number"
+            />
+            <FormCheckbox
+              control={form.control}
+              name="isAdmin"
+              label="isAdmin"
+              disabled={!isAdmin}
             />
           </div>
           <div className="col-span-2">{actionButtons}</div>
