@@ -1,7 +1,7 @@
+import containerQueryPlugin from "@tailwindcss/container-queries"
 import type { Config } from "tailwindcss"
 import { fontFamily } from "tailwindcss/defaultTheme"
 import tailwindAnimate from "tailwindcss-animate"
-import containerQueryPlugin from "@tailwindcss/container-queries"
 
 import twScrollbarPluginWithOptions from "./src/lib/plugins/tw-scroll-bar-plugin"
 

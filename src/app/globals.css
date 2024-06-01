@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    --base-color: hsl(166, 25%, 15%);
+
     --track-background: 166 25% 75%;
     --thumb-background: 220 20% 75%;
 

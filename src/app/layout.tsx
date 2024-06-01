@@ -27,9 +27,10 @@ export const metadata: Metadata = {
   ],
   creator: "hareeshpolla",
   icons: {
+    // generated using https://icon.kitchen with app-icon-original-512x512.png as srource img
     icon: "/favicon.ico",
-    shortcut: "/pwa-64x64.png",
-    apple: "/apple-touch-icon-180x180.png",
+    shortcut: "/icon-192.png",
+    apple: "/apple-touch-icon.png",
   },
   manifest: `/site.webmanifest`,
 }
