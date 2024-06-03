@@ -8,7 +8,7 @@ export async function POST(request: Request) {
   const { name, email } = emailWelcomeSchema.parse(body)
   try {
     const data = await resend.emails.send({
-      from: "TerabitIO <onboarding@resend.dev>",
+      from: "SriKarumariAmmanCalgary Temple <temple_admin@srikarumariamman.terabits.io>",
       to: [email],
       subject: "Welcome to HomeHub",
       react: WelcomeEmail({ firstName: name }),
