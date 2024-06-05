@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react"
 
 const Page = () => {
   return (
-    <main className="mx-auto my-auto max-w-lg rounded-lg bg-popover p-10">
+    <main className="m-auto max-w-lg rounded-lg bg-popover p-10">
       <h1 className="text-center text-2xl font-bold">
         Sign in to your account
       </h1>

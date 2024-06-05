@@ -1,7 +1,7 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { getUserAuth } from "@/lib/auth/utils"
+import { getUserAuth } from "@/auth"
 import { db } from "@/lib/db"
 
 export async function updateUser(body: { name?: string; email?: string }) {

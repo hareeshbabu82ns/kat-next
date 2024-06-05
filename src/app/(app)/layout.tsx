@@ -4,8 +4,8 @@ import Navbar from "@/components/layout/Navbar"
 import Sidebar from "@/components/layout/Sidebar"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 import NextAuthProvider from "@/lib/auth/Provider"
-import { checkAuth } from "@/lib/auth/utils"
 import { cn } from "@/lib/utils"
+import { checkAuth } from "@/auth"
 export default async function AppLayout({
   children,
 }: {

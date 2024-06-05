@@ -1,4 +1,4 @@
-import { checkAuth, getUserAuth } from "@/lib/auth/utils"
+import { checkAuth, getUserAuth } from "@/auth"
 import UserSettings from "./UserSettings"
 
 export default async function Account() {

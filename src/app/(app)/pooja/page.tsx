@@ -3,7 +3,7 @@ import EventTile from "@/components/events/EventTile"
 import PageHeader from "@/components/layout/PageHeader"
 import { Icons } from "@/components/shared/icons"
 import { buttonVariants } from "@/components/ui/button"
-import { getUserAuth } from "@/lib/auth/utils"
+import { getUserAuth } from "@/auth"
 import { cn } from "@/lib/utils"
 import { getEvents } from "./actions"
 

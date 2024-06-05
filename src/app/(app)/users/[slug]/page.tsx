@@ -5,7 +5,7 @@ import SignOutBtn from "@/components/auth/SignOutBtn"
 import UserForm from "@/components/auth/UserForm"
 import PageHeader from "@/components/layout/PageHeader"
 import { Icons } from "@/components/shared/icons"
-import { getUserAuth } from "@/lib/auth/utils"
+import { getUserAuth } from "@/auth"
 import { UserInputSchema } from "@/lib/validations/user"
 import { getUser } from "../actions"
 

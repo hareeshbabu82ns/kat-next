@@ -1,7 +1,7 @@
 "use server"
 
 import { Booking } from "@prisma/client"
-import { getUserAuth } from "@/lib/auth/utils"
+import { getUserAuth } from "@/auth"
 import { db } from "@/lib/db"
 
 // Booking actions

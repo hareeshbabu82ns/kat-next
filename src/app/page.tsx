@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import AuthButton from "@/components/auth/AuthButton.server"
 import Footer from "@/components/layout/Footer"
 import MountainIcon from "@/components/layout/MountainIcon"
 import Timings from "@/components/layout/Timings"
@@ -19,8 +20,12 @@ export default function Home() {
             <Link href="#timings">Timings</Link>
           </Button>
           <Button asChild variant="link">
-            <Link href="/sign-in">Sign In</Link>
+            <Link href="/dashboard">Dashboard</Link>
           </Button>
+          {/* <Button asChild variant="link">
+            <Link href="/api/auth/signin">Sign In</Link>
+          </Button> */}
+          <AuthButton />
         </nav>
       </header>
       <main className="flex flex-1 flex-col items-center gap-8 pt-10">

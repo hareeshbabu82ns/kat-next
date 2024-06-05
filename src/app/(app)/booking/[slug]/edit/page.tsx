@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import { getBooking } from "@/app/(app)/booking/actions"
 import BookingForm from "@/components/booking/BookingForm"
 import PageHeader from "@/components/layout/PageHeader"
-import { getUserAuth } from "@/lib/auth/utils"
+import { getUserAuth } from "@/auth"
 import { formatCurrency, formatDuration } from "@/lib/utils"
 
 interface BookingEditPageProps {
