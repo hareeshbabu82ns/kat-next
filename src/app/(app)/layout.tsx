@@ -5,13 +5,13 @@ import Sidebar from "@/components/layout/Sidebar"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 import NextAuthProvider from "@/lib/auth/Provider"
 import { cn } from "@/lib/utils"
-import { checkAuth } from "@/auth"
+// import { checkAuth } from "@/lib/auth"
 export default async function AppLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  await checkAuth()
+  // await checkAuth()
   return (
     <>
       <NextAuthProvider>

@@ -1,7 +1,7 @@
 import { SessionProvider } from "next-auth/react"
 import { ReactNode } from "react"
-import { auth } from "@/auth"
-import { BASE_PATH } from "./utils"
+import { apiRoutePrefix } from "@/config/routes"
+import { auth } from "@/lib/auth"
 
 export default async function NextAuthProvider({
   children,
@@ -18,7 +18,7 @@ export default async function NextAuthProvider({
     }
   }
   return (
-    <SessionProvider basePath={BASE_PATH} session={session}>
+    <SessionProvider basePath={apiRoutePrefix} session={session}>
       {children}
     </SessionProvider>
   )

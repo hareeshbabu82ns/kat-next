@@ -2,11 +2,11 @@ import Link from "next/link"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-import { getUserAuth } from "@/auth"
+import { getUserAuth } from "@/lib/auth"
+import { AuthSession } from "@/lib/auth/utils"
 import { avatarAltName } from "@/lib/utils"
 import AppTitleLogo from "./AppTitleLogo"
 import SidebarItems from "./SidebarItems"
-import { AuthSession } from "@/lib/auth/utils"
 
 const Sidebar = async () => {
   const session = await getUserAuth()

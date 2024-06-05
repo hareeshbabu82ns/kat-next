@@ -1,7 +1,7 @@
 "use server"
 
 import { z } from "zod"
-import { getUserAuth } from "@/auth"
+import { getUserAuth } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { UserInputSchema } from "@/lib/validations/user"
 

@@ -4,7 +4,7 @@ import { z } from "zod"
 import EventForm from "@/components/events/EventForm"
 import PageHeader from "@/components/layout/PageHeader"
 import { siteConfig } from "@/config/site"
-import { getUserAuth } from "@/auth"
+import { getUserAuth } from "@/lib/auth"
 import { EventInputSchema } from "@/lib/validations/event"
 import { getEvent } from "../../actions"
 

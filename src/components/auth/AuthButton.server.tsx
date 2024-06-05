@@ -1,11 +1,11 @@
 import { SessionProvider } from "next-auth/react"
-import { auth } from "@/auth"
 import AuthClientButton from "@/components/auth/AuthButton.client"
-import { BASE_PATH } from "@/lib/auth/utils"
+import { apiRoutePrefix } from "@/config/routes"
+import { auth } from "@/lib/auth"
 
 export default async function AuthButton() {
   const session = await auth()
-  console.log("auth button: ", session)
+  // console.log("auth button: ", session)
   if (session && session.user) {
     session.user = {
       id: session.user.id,
@@ -15,7 +15,7 @@ export default async function AuthButton() {
   }
 
   return (
-    <SessionProvider basePath={BASE_PATH} session={session}>
+    <SessionProvider basePath={apiRoutePrefix} session={session}>
       <AuthClientButton />
     </SessionProvider>
   )

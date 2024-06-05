@@ -1,7 +1,7 @@
 import Link from "next/link"
 import React from "react"
 import BookingTile from "@/components/booking/BookingTile"
-import { getUserAuth } from "@/auth"
+import { getUserAuth } from "@/lib/auth"
 import { getBookings } from "../booking/actions"
 
 const Bookings = async () => {

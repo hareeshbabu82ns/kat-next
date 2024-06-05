@@ -3,7 +3,7 @@ import { z } from "zod"
 import UserForm from "@/components/auth/UserForm"
 import PageHeader from "@/components/layout/PageHeader"
 import { siteConfig } from "@/config/site"
-import { getUserAuth } from "@/auth"
+import { getUserAuth } from "@/lib/auth"
 import { UserInputSchema } from "@/lib/validations/user"
 
 const defaultUserData: z.infer<typeof UserInputSchema> = {
