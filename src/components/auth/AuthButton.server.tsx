@@ -6,13 +6,13 @@ import { auth } from "@/lib/auth"
 export default async function AuthButton() {
   const session = await auth()
   // console.log("auth button: ", session)
-  if (session && session.user) {
-    session.user = {
-      id: session.user.id,
-      name: session.user.email,
-      email: session.user.email,
-    }
-  }
+  // if (session && session.user) {
+  //   session.user = {
+  //     id: session.user.id,
+  //     name: session.user.email,
+  //     email: session.user.email,
+  //   }
+  // }
 
   return (
     <SessionProvider basePath={apiRoutePrefix} session={session}>

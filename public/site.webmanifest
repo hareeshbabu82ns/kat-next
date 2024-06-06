@@ -1,4 +1,5 @@
 {
+  "id": "com.kat.events",
   "name": "Sri Karumariamman Temple",
   "short_name": "KAT",
   "start_url": "/",
@@ -8,6 +9,15 @@
   "scope": "/",
   "theme_color": "#36574E",
   "display_override": ["standalone"],
+  "url_handlers": [
+    {
+      "origin": "https://kat-events.vercel.app"
+    },
+    {
+      "origin": "https://kat-events.vercel.app",
+      "login_url": "/sign-in"
+    }
+  ],
   "icons": [
     { "src": "/favicon.ico", "type": "image/x-icon", "sizes": "16x16 32x32" },
     { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },

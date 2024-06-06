@@ -1,0 +1,10 @@
+{
+  "web_apps": [
+    {
+      "manifest": "https://kat-events.vercel.app",
+      "details": {
+        "paths": ["/*"]
+      }
+    }
+  ]
+}

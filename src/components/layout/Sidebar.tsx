@@ -35,13 +35,15 @@ const UserDetails = ({ session }: { session: AuthSession }) => {
   if (session.session === null) return null
   const { user } = session.session
 
-  if (!user?.name || user.name.length == 0) return null
+  const name = user?.name ?? user?.email ?? ""
+
+  if (!name || name.length == 0) return null
 
   return (
     <Link href={`/users/${user.id}`}>
       <div className="flex w-full items-center justify-between border-t border-border px-2 pt-4">
         <div className="text-primary">
-          <p className="text-xs">{user.name ?? ""}</p>
+          {name !== user?.email && <p className="text-xs">{name}</p>}
           <p className="pr-4 text-xs font-light text-blue-900 dark:text-blue-300">
             {user.email ?? ""}
           </p>

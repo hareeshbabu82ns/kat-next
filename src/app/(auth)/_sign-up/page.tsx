@@ -2,7 +2,6 @@
 import { LockKeyholeIcon } from "lucide-react"
 import Link from "next/link"
 import { signIn } from "next-auth/react"
-import { useState } from "react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
@@ -14,11 +13,8 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { signInEmail } from "@/lib/auth/actions"
 
-export default function LoginForm() {
-  const [email, setEmail] = useState("")
-
+export default function SignupForm() {
   return (
     <Card className="min-w-lg m-auto rounded-lg p-2 md:min-w-[500px]">
       <CardHeader>
@@ -28,13 +24,17 @@ export default function LoginForm() {
             <AvatarFallback>Logo</AvatarFallback>
           </Avatar>
         </div>
-        <CardTitle className="text-2xl">Login</CardTitle>
+        <CardTitle className="text-xl">Sign Up</CardTitle>
         <CardDescription>
-          eMail login currently only supported on browsers
+          Enter your information to create an account
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="grid gap-4">
+          <div className="grid gap-2">
+            <Label htmlFor="full-name">Full Name</Label>
+            <Input id="full-name" placeholder="Full Name" required />
+          </div>
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
             <Input
@@ -42,16 +42,14 @@ export default function LoginForm() {
               type="email"
               placeholder="m@example.com"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <Button
-            variant="outline"
-            className="w-full"
-            onClick={() => signInEmail(email)}
-          >
-            Login with Email
+          <div className="grid gap-2">
+            <Label htmlFor="password">Password</Label>
+            <Input id="password" type="password" />
+          </div>
+          <Button type="submit" className="w-full">
+            Create an account
           </Button>
           {/* divider */}
           <div className="flex w-full items-center py-4">
@@ -61,21 +59,20 @@ export default function LoginForm() {
             </span>
             <div className="h-px flex-1 bg-primary" />
           </div>
-
           <Button
             variant="outline"
             className="w-full"
             onClick={() => signIn("google")}
           >
-            Login with Google
+            Sign up with Google
           </Button>
         </div>
-        {/* <div className="mt-4 text-center text-sm">
-          Don&apos;t have an account?{" "}
-          <Link href="/sign-up" className="underline">
-            Sign up
+        <div className="mt-4 text-center text-sm">
+          Already have an account?{" "}
+          <Link href="/sign-in" className="underline">
+            Sign in
           </Link>
-        </div> */}
+        </div>
       </CardContent>
     </Card>
   )
