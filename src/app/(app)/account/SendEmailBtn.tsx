@@ -5,12 +5,12 @@ import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { emailWelcomeSchema } from "@/lib/email/utils"
 
-const SendEmailBtn = ({
-  disabled,
+const SendWelcomeEmailBtn = ({
+  disabled = false,
   name,
   email,
 }: {
-  disabled: boolean
+  disabled?: boolean
   name: string
   email: string
 }) => {
@@ -64,4 +64,4 @@ const SendEmailBtn = ({
   )
 }
 
-export default SendEmailBtn
+export default SendWelcomeEmailBtn

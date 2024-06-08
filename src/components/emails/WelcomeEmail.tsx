@@ -1,25 +1,104 @@
-interface EmailTemplateProps {
-  firstName: string
+// REF: https://demo.react.email/preview/welcome/koala-welcome?view=desktop&lang=jsx
+import {
+  Body,
+  Button,
+  Container,
+  Head,
+  Hr,
+  Html,
+  Img,
+  Preview,
+  Section,
+  Text,
+} from "@react-email/components"
+import * as React from "react"
+import { siteConfig } from "@/config/site"
+
+interface WelcomeEmailProps {
+  name: string
 }
 
-export const WelcomeEmail: React.FC<Readonly<EmailTemplateProps>> = ({
-  firstName,
-}) => (
-  <div>
-    <h1>Welcome, {firstName}!</h1>
-    <p>
-      Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim
-      labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet.
-      Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum
-      Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident.
-      Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex
-      occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat
-      officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in
-      Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non
-      excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco
-      ut ea consectetur et est culpa et culpa duis.
-    </p>
-    <hr />
-    <p>Sent with help from Resend and TerabitsIO 😊</p>
-  </div>
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "/"
+
+export const WelcomeEmail = ({ name }: WelcomeEmailProps) => (
+  <Html>
+    <Head />
+    <Preview>Welcome to {siteConfig.name}</Preview>
+    <Body style={main}>
+      <Container style={container}>
+        <Img
+          src={`${baseUrl}/kat-logo.png`}
+          width="170"
+          height="170"
+          alt="KAT Events Logo"
+          style={logo}
+        />
+        <Text style={paragraph}>Hi {name},</Text>
+        <Text style={paragraph}>Welcome to {siteConfig.name}.</Text>
+        <Section style={btnContainer}>
+          <Button style={button} href={baseUrl}>
+            Get started
+          </Button>
+        </Section>
+        <Text style={paragraph}>
+          Best Wishes,
+          <br />
+          The Amman Admin Team
+        </Text>
+        <Hr style={hr} />
+        <Text style={footer}>{siteConfig.address}</Text>
+      </Container>
+    </Body>
+  </Html>
 )
+
+WelcomeEmail.PreviewProps = {
+  name: "Alan",
+} as WelcomeEmailProps
+
+export default WelcomeEmail
+
+const main = {
+  backgroundColor: "#ffffff",
+  fontFamily:
+    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+}
+
+const container = {
+  margin: "0 auto",
+  padding: "20px 0 48px",
+}
+
+const logo = {
+  margin: "0 auto",
+}
+
+const paragraph = {
+  fontSize: "16px",
+  lineHeight: "26px",
+}
+
+const btnContainer = {
+  textAlign: "center" as const,
+}
+
+const button = {
+  backgroundColor: "#5F51E8",
+  borderRadius: "3px",
+  color: "#fff",
+  fontSize: "16px",
+  textDecoration: "none",
+  textAlign: "center" as const,
+  display: "block",
+  padding: "12px",
+}
+
+const hr = {
+  borderColor: "#cccccc",
+  margin: "20px 0",
+}
+
+const footer = {
+  color: "#8898aa",
+  fontSize: "12px",
+}

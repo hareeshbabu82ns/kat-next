@@ -1,7 +1,7 @@
 "use server"
 
-import { revalidatePath } from "next/cache"
-import { redirect } from "next/navigation"
+// import { revalidatePath } from "next/cache"
+// import { redirect } from "next/navigation"
 import { z } from "zod"
 import { UserSigninSchema } from "../validations/user"
 import { signIn as naSignIn, signOut as naSignOut } from "."
@@ -22,7 +22,7 @@ export const signInCredentials = async (
 }
 
 export const signInEmail = async (email: string) => {
-  return naSignIn("resend", { email })
+  return naSignIn("resend", { email, redirect: false })
 }
 
 export const signOut = async () => {

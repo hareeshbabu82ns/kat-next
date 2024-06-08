@@ -17,13 +17,13 @@ export default auth((req) => {
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiRoutePrefix)
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
-  const isAuthRoute = privateRoutes.includes(nextUrl.pathname)
+  // const isAuthRoute = privateRoutes.includes(nextUrl.pathname)
 
-  console.log("middleware: ROUTE", req.nextUrl.pathname)
-  console.log("middleware: isLoggedIn", isLoggedIn)
-  console.log("middleware: isApiAuthRoute", isApiAuthRoute)
-  console.log("middleware: isPublicRoute", isPublicRoute)
-  console.log("middleware: isAuthRoute", isAuthRoute)
+  // console.log("middleware: ROUTE", req.nextUrl.pathname)
+  // console.log("middleware: isLoggedIn", isLoggedIn)
+  // console.log("middleware: isApiAuthRoute", isApiAuthRoute)
+  // console.log("middleware: isPublicRoute", isPublicRoute)
+  // console.log("middleware: isAuthRoute", isAuthRoute)
 
   if (isApiAuthRoute) {
     return

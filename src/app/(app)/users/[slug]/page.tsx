@@ -8,6 +8,7 @@ import { Icons } from "@/components/shared/icons"
 import { getUserAuth } from "@/lib/auth"
 import { UserInputSchema } from "@/lib/validations/user"
 import { getUser } from "../actions"
+import SendWelcomeEmailBtn from "../../account/SendEmailBtn"
 
 interface UserDetailsPageProps {
   params: {
@@ -32,11 +33,17 @@ const UserDetailsPage = async ({ params }: UserDetailsPageProps) => {
   return (
     <div className="flex flex-col gap-2">
       <PageHeader title={`User: ${user.name}`}>
-        {session?.user.id === params.slug && (
-          <SignOutBtn variant="ghost" size="icon">
-            <Icons.logout className="size-4" />
-          </SignOutBtn>
-        )}
+        <>
+          {session?.user.id === params.slug && (
+            <SignOutBtn variant="ghost" size="icon">
+              <Icons.logout className="size-4" />
+            </SignOutBtn>
+          )}
+          <SendWelcomeEmailBtn
+            name={user.name || ""}
+            email={user.email || ""}
+          />
+        </>
       </PageHeader>
       <UserForm
         isAdmin={session?.user.isAdmin}

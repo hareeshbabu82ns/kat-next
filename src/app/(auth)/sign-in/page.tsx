@@ -49,7 +49,10 @@ export default function LoginForm() {
           <Button
             variant="outline"
             className="w-full"
-            onClick={() => signInEmail(email)}
+            onClick={async () => {
+              const res = await signInEmail(email)
+              console.log("signInEmail", res)
+            }}
           >
             Login with Email
           </Button>
