@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client"
 import Link from "next/link"
 import React from "react"
 import BookingTile from "@/components/booking/BookingTile"
@@ -32,7 +33,7 @@ const Bookings = async () => {
                 confirmed={booking.confirmed}
                 paid={booking.paid}
                 paidAmount={booking.paidAmount || 0}
-                isAdmin={session?.user.isAdmin}
+                isAdmin={session?.user.role === UserRole.ADMIN}
               />
             </Link>
           )

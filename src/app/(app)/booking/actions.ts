@@ -1,6 +1,6 @@
 "use server"
 
-import { Booking } from "@prisma/client"
+import { Booking, UserRole } from "@prisma/client"
 import { getUserAuth } from "@/lib/auth"
 import { db } from "@/lib/db"
 
@@ -12,7 +12,7 @@ export async function getBooking(id: string) {
   const where: Record<string, unknown> = {}
 
   where["id"] = id
-  if (!session?.user.isAdmin) {
+  if (session?.user.role !== UserRole.ADMIN) {
     where["userEmail"] = session.user.email || ""
   }
 
@@ -33,7 +33,7 @@ export async function getBookings() {
   const { session } = await getUserAuth()
   if (!session) throw new Error("No session found")
 
-  if (!session?.user.isAdmin) {
+  if (session?.user.role !== UserRole.ADMIN) {
     const bookings = await db.booking.findMany({
       where: {
         userEmail: session.user.email || "",

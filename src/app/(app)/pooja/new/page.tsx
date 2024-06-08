@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client"
 import { endOfMonth, startOfMonth } from "date-fns"
 import React from "react"
 import { z } from "zod"
@@ -20,7 +21,7 @@ const defaultPoojaEventData: z.infer<typeof EventInputSchema> = {
 
 const PoojaNewPage = async () => {
   const { session } = await getUserAuth()
-  if (!session?.user.isAdmin) {
+  if (session?.user.role !== UserRole.ADMIN) {
     throw new Error("Unauthorized")
   }
 

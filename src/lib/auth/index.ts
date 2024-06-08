@@ -4,12 +4,12 @@ import { Adapter } from "next-auth/adapters"
 // import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
 import ResendProvider from "next-auth/providers/resend"
+import WelcomeEmail from "@/components/emails/WelcomeEmail"
 import { siteConfig } from "@/config/site"
 import { authOptionsPartial } from "@/lib/auth/utils"
 import { db } from "@/lib/db"
 import { env } from "@/lib/env.mjs"
 import { sendMail } from "../email/actions"
-import WelcomeEmail from "@/components/emails/WelcomeEmail"
 
 export const authOptions: NextAuthConfig = {
   ...authOptionsPartial,

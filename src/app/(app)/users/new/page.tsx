@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client"
 import React from "react"
 import { z } from "zod"
 import UserForm from "@/components/auth/UserForm"
@@ -21,7 +22,7 @@ const UserDetailsPage = async () => {
     <div className="flex flex-col gap-2">
       <PageHeader title={`User: New`} />
       <UserForm
-        isAdmin={session?.user.isAdmin}
+        isAdmin={session?.user.role === UserRole.ADMIN}
         sessionUserId={session?.user.id}
         data={defaultUserData}
       />

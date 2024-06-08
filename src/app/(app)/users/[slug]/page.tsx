@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client"
 import { notFound } from "next/navigation"
 import React from "react"
 import { z } from "zod"
@@ -8,7 +9,6 @@ import { Icons } from "@/components/shared/icons"
 import { getUserAuth } from "@/lib/auth"
 import { UserInputSchema } from "@/lib/validations/user"
 import { getUser } from "../actions"
-import SendWelcomeEmailBtn from "../../account/SendEmailBtn"
 
 interface UserDetailsPageProps {
   params: {
@@ -27,7 +27,7 @@ const UserDetailsPage = async ({ params }: UserDetailsPageProps) => {
     image: user.image || "",
     email: user.email || "",
     telephone: user.telephone || "",
-    isAdmin: user.isAdmin,
+    isAdmin: user.role === UserRole.ADMIN,
   }
 
   return (
@@ -39,14 +39,10 @@ const UserDetailsPage = async ({ params }: UserDetailsPageProps) => {
               <Icons.logout className="size-4" />
             </SignOutBtn>
           )}
-          <SendWelcomeEmailBtn
-            name={user.name || ""}
-            email={user.email || ""}
-          />
         </>
       </PageHeader>
       <UserForm
-        isAdmin={session?.user.isAdmin}
+        isAdmin={session?.user.role === UserRole.ADMIN}
         sessionUserId={session?.user.id}
         userId={user.id}
         data={userData}

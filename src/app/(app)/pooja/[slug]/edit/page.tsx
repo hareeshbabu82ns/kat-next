@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client"
 import { notFound } from "next/navigation"
 import React from "react"
 import { z } from "zod"
@@ -16,7 +17,7 @@ interface PoojaEditPageProps {
 
 const PoojaEditPage = async ({ params }: PoojaEditPageProps) => {
   const { session } = await getUserAuth()
-  if (!session?.user.isAdmin) {
+  if (session?.user.role !== UserRole.ADMIN) {
     throw new Error("Unauthorized")
   }
   const event = await getEvent(params.slug)

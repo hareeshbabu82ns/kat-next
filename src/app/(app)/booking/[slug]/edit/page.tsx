@@ -4,6 +4,7 @@ import BookingForm from "@/components/booking/BookingForm"
 import PageHeader from "@/components/layout/PageHeader"
 import { getUserAuth } from "@/lib/auth"
 import { formatCurrency, formatDuration } from "@/lib/utils"
+import { UserRole } from "@prisma/client"
 
 interface BookingEditPageProps {
   params: {
@@ -46,7 +47,7 @@ const BookingEditPage = async ({ params }: BookingEditPageProps) => {
       <BookingForm
         bookingId={booking.id}
         eventData={booking.event}
-        isAdmin={auth.session?.user.isAdmin}
+        isAdmin={auth.session?.user.role === UserRole.ADMIN}
         data={data}
         userData={userData}
       />

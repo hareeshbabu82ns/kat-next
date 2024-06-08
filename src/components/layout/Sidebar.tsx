@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client"
 import Link from "next/link"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -19,7 +20,9 @@ const Sidebar = async () => {
           <AppTitleLogo />
         </div>
         <div className="py-4 pl-4 pr-6 md:py-6">
-          <SidebarItems isAdmin={session.session.user.isAdmin || false} />
+          <SidebarItems
+            isAdmin={session.session.user.role === UserRole.ADMIN}
+          />
         </div>
       </div>
       <div className="p-2">

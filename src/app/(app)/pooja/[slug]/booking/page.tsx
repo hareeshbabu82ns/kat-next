@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client"
 import { notFound } from "next/navigation"
 import React from "react"
 import { z } from "zod"
@@ -43,8 +44,11 @@ const BookingPage = async ({ params }: BookingPageProps) => {
   const data = {
     ...defaultBookingData,
     eventId: event.id,
-    userEmail: auth.session?.user.isAdmin ? "" : auth.session?.user.email || "",
-    paidAmount: auth.session?.user.isAdmin ? event.price : 0,
+    userEmail:
+      auth.session?.user.role === UserRole.ADMIN
+        ? ""
+        : auth.session?.user.email || "",
+    paidAmount: auth.session?.user.role === UserRole.ADMIN ? event.price : 0,
   }
   const userData = {
     name: auth.session?.user.name || "",
@@ -57,7 +61,7 @@ const BookingPage = async ({ params }: BookingPageProps) => {
       <PageHeader title={eventTitle} />
       <BookingForm
         eventData={event}
-        isAdmin={auth.session?.user.isAdmin}
+        isAdmin={auth.session?.user.role === UserRole.ADMIN}
         data={data}
         userData={userData}
       />

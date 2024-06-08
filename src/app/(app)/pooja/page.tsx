@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client"
 import Link from "next/link"
 import EventTile from "@/components/events/EventTile"
 import PageHeader from "@/components/layout/PageHeader"
@@ -16,7 +17,7 @@ export default async function Pooja() {
     <main className="flex flex-col">
       <PageHeader title="Pooja" showBackButton={false}>
         <div>
-          {session?.user.isAdmin && (
+          {session?.user.role === UserRole.ADMIN && (
             <Link
               href="/pooja/new"
               className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}

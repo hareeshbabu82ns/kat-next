@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client"
 import Link from "next/link"
 import UserListItem from "@/components/auth/UserListItem"
 import PageHeader from "@/components/layout/PageHeader"
@@ -16,7 +17,7 @@ export default async function Users() {
     <main className="flex flex-col">
       <PageHeader title="Users" showBackButton={false}>
         <div>
-          {session?.user.isAdmin && (
+          {session?.user.role === UserRole.ADMIN && (
             <Link
               href="/users/new"
               className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
@@ -33,7 +34,7 @@ export default async function Users() {
               name={user.name || ""}
               email={user.email || ""}
               image={user.image || ""}
-              isAdmin={user.isAdmin}
+              isAdmin={user.role === UserRole.ADMIN}
               telephone={user.telephone || ""}
             />
           </Link>

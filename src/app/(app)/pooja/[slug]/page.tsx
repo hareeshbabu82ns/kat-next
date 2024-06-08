@@ -8,6 +8,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { getUserAuth } from "@/lib/auth"
 import { cn } from "@/lib/utils"
 import { getEvent } from "../actions"
+import { UserRole } from "@prisma/client"
 
 interface PoojaDetailsPageProps {
   params: {
@@ -25,7 +26,7 @@ const PoojaDetailsPage = async ({ params }: PoojaDetailsPageProps) => {
     <div className="flex flex-col gap-2">
       <PageHeader title={`Event: ${event.title}`}>
         <div>
-          {session?.user.isAdmin && (
+          {session?.user.role === UserRole.ADMIN && (
             <Link
               href={`/pooja/${event.id}/edit`}
               className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
