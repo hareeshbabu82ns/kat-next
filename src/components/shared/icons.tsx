@@ -33,6 +33,7 @@ import {
   SunMedium,
   TimerResetIcon,
   Trash2 as Trash,
+  Upload,
   User,
   Users2 as Users,
   X,
@@ -76,6 +77,7 @@ export const Icons = {
   moon: Moon,
   laptop: Laptop,
   logout: LogOut,
+  upload: Upload,
   facebook: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

@@ -5,6 +5,7 @@ import PageHeader from "@/components/layout/PageHeader"
 import { Icons } from "@/components/shared/icons"
 import { buttonVariants } from "@/components/ui/button"
 import { getUserAuth } from "@/lib/auth"
+import SeedUploadButton from "@/lib/db/seed-upload-btn"
 import { cn } from "@/lib/utils"
 import { getEvents } from "./actions"
 
@@ -18,12 +19,17 @@ export default async function Pooja() {
       <PageHeader title="Pooja" showBackButton={false}>
         <div>
           {session?.user.role === UserRole.ADMIN && (
-            <Link
-              href="/pooja/new"
-              className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
-            >
-              <Icons.add className="size-5" />
-            </Link>
+            <>
+              <Link
+                href="/pooja/new"
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "icon" })
+                )}
+              >
+                <Icons.add className="size-5" />
+              </Link>
+              <SeedUploadButton />
+            </>
           )}
         </div>
       </PageHeader>

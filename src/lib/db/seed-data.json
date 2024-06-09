@@ -1,0 +1,251 @@
+{
+  "events": [
+    {
+      "title": "Milk Abishekam",
+      "price": 75,
+      "duration": 30,
+      "numOfSeats": 20,
+      "thumbnail": "/kat-logo.png",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "title": "Lamp(each)",
+      "price": 10,
+      "duration": 15,
+      "numOfSeats": 20,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "title": "Blessing of New Things",
+      "price": 51,
+      "duration": 30,
+      "numOfSeats": 10,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": "*Pictures * Keys * Gold * Books _or_ Documents * Wedding cards"
+    },
+    {
+      "title": "Sahasranama Archanai (1008)",
+      "price": 101,
+      "duration": 30,
+      "numOfSeats": 20,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2019/12/IMG_1697-Copy.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": "Chanting manthira by 1008 names,it can be performed to any god"
+    },
+    {
+      "title": "Kunkuma Archana",
+      "price": 125,
+      "duration": 30,
+      "numOfSeats": 20,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z"
+    },
+    {
+      "title": "Santhanakkapu",
+      "price": 125,
+      "duration": 30,
+      "numOfSeats": 5,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Name Proposal ceremony",
+      "price": 201,
+      "duration": 60,
+      "numOfSeats": 1,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Siraartha Archanai (Morsham)",
+      "price": 51,
+      "duration": 30,
+      "numOfSeats": 20,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2019/12/IMG_1697-Copy.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Ashtothara Nama Archanai (108)",
+      "price": 51,
+      "duration": 30,
+      "numOfSeats": 20,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2019/12/IMG_1697-Copy.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": "Chanting manthira by 108 name,it can be performed to any god names"
+    },
+    {
+      "title": "Homam at temple",
+      "price": 251,
+      "duration": 90,
+      "numOfSeats": 1,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Special Lunch Pooja",
+      "price": 301,
+      "duration": 120,
+      "numOfSeats": 1,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Homam at Home",
+      "price": 301,
+      "duration": 120,
+      "numOfSeats": 1,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "New Home Arrival Ceremony",
+      "price": 301,
+      "duration": 60,
+      "numOfSeats": 1,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Sathiyanarayanarayana Pooja (Homam)",
+      "price": 301,
+      "duration": 120,
+      "numOfSeats": 1,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Milk Rice Pongal",
+      "price": 151,
+      "duration": 60,
+      "numOfSeats": 5,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Beginning of Education (For Child)",
+      "price": 61,
+      "duration": 30,
+      "numOfSeats": 20,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Annual Siraatha",
+      "price": 201,
+      "duration": 60,
+      "numOfSeats": 1,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/about-pg-.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Vahana (Vehicle) Archana",
+      "price": 51,
+      "duration": 30,
+      "numOfSeats": 20,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2019/12/IMG_1697-Copy.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Aathama linga Abisegam",
+      "price": 15,
+      "duration": 30,
+      "numOfSeats": 20,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": "**Turmeric water only** _by devotees_ for _each pot_ (**Only Prathosa Days and Mondays before pooja**)"
+    },
+    {
+      "title": "Feeding Rice for baby for each child",
+      "price": 61,
+      "duration": 30,
+      "numOfSeats": 1,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Punniyasthanam at home",
+      "price": 201,
+      "duration": 90,
+      "numOfSeats": 1,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Navagraha Milk abisegam",
+      "price": 101,
+      "duration": 30,
+      "numOfSeats": 5,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Vadai Malai Pooja",
+      "price": 251,
+      "duration": 60,
+      "numOfSeats": 1,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Maha Uruthira Abishekam",
+      "price": 201,
+      "duration": 60,
+      "numOfSeats": 1,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2016/01/yagam.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "title": "Regular Archana",
+      "price": 10,
+      "duration": 10,
+      "numOfSeats": 50,
+      "thumbnail": "https://karumariamman.ca/wp-content/uploads/2019/12/IMG_1697-Copy.jpg",
+      "dateFrom": "2024-01-01T00:00:00.000Z",
+      "dateTo": "2024-12-31T23:00:00.000Z",
+      "description": ""
+    }
+  ]
+}
