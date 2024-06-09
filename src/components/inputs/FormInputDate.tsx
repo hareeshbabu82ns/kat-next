@@ -1,8 +1,8 @@
 // Ref: TimePicker: https://time.openstatus.dev
 import { addDays, addYears, format, subYears } from "date-fns"
-import { CalendarIcon } from "lucide-react"
 import { Control } from "react-hook-form"
 import { cn } from "@/lib/utils"
+import { Icons } from "../shared/icons"
 import { Button } from "../ui/button"
 import { Calendar } from "../ui/calendar"
 import {
@@ -69,7 +69,7 @@ const FormInputDate = ({
                     ) : (
                       <span>{label}</span>
                     )}
-                    <CalendarIcon className="ml-auto size-4 opacity-50" />
+                    <Icons.calendar className="ml-auto size-4 opacity-50" />
                   </Button>
                 </FormControl>
               </PopoverTrigger>

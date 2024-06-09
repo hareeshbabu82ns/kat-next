@@ -1,10 +1,5 @@
-import {
-  Cog,
-  HomeIcon,
-  Palette as Pooja,
-  Users2 as UsersIcon,
-} from "lucide-react"
 import { SidebarLink } from "@/components/layout/SidebarItems"
+import { Icons } from "@/components/shared/icons"
 
 type AdditionalLinks = {
   title: string
@@ -13,18 +8,18 @@ type AdditionalLinks = {
 
 export const getDefaultLinks = (isAdmin: boolean): SidebarLink[] => {
   const links = [
-    { href: "/dashboard", title: "Home", icon: HomeIcon },
+    { href: "/dashboard", title: "Home", icon: Icons.home },
     {
       href: "/pooja",
       title: "Pooja",
-      icon: Pooja,
+      icon: Icons.pooja,
     },
   ]
   if (isAdmin) {
     links.push({
       href: "/users",
       title: "Users",
-      icon: UsersIcon,
+      icon: Icons.users,
     })
   }
   return links
@@ -33,6 +28,9 @@ export const getDefaultLinks = (isAdmin: boolean): SidebarLink[] => {
 export const additionalLinks: AdditionalLinks[] = [
   {
     title: "Extras",
-    links: [{ href: "/settings", title: "Settings", icon: Cog }],
+    links: [
+      { href: "/settings", title: "Settings", icon: Icons.settings },
+      { href: "/api/auth/signout", title: "Signout", icon: Icons.logout },
+    ],
   },
 ]

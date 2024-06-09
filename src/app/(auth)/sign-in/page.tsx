@@ -1,6 +1,5 @@
 "use client"
 import { LockKeyholeIcon } from "lucide-react"
-import Link from "next/link"
 import { signIn } from "next-auth/react"
 import { useState } from "react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"

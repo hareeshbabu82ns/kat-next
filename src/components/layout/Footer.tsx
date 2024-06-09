@@ -1,9 +1,3 @@
-import {
-  Globe2 as GlobeIcon,
-  Mail as MailIcon,
-  Map as MapIcon,
-  Phone as PhoneIcon,
-} from "lucide-react"
 import React from "react"
 import { siteConfig } from "@/config/site"
 import { formatPhoneNumber } from "@/lib/utils"
@@ -37,7 +31,7 @@ const Footer = () => {
             target="_blank"
             className="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
           >
-            <MailIcon className="size-4" />
+            <Icons.email className="size-4" />
             <span className="sr-only">Email: {siteConfig.links.email}</span>
           </a>
           <a
@@ -45,7 +39,7 @@ const Footer = () => {
             target="_blank"
             className="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
           >
-            <PhoneIcon className="size-4" />
+            <Icons.phone className="size-4" />
             <span className="sr-only">
               Telephone: {formatPhoneNumber(siteConfig.links.tel)}
             </span>
@@ -55,7 +49,7 @@ const Footer = () => {
             target="_blank"
             className="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
           >
-            <GlobeIcon className="size-4" />
+            <Icons.globe className="size-4" />
             <span className="sr-only">Website: {siteConfig.url}</span>
           </a>
           <a
@@ -63,7 +57,7 @@ const Footer = () => {
             target="_blank"
             className="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
           >
-            <MapIcon className="size-4" />
+            <Icons.map className="size-4" />
             <span className="sr-only">Address: {siteConfig.address}</span>
           </a>
         </div>
