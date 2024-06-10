@@ -2,6 +2,7 @@ import {
   AlertTriangle,
   ArrowLeft,
   ArrowRight,
+  Bell,
   Calendar,
   CalendarCheck,
   Check,
@@ -36,6 +37,7 @@ import {
   RefreshCcw,
   SaveIcon,
   Settings,
+  SlidersVertical,
   SunMedium,
   TimerResetIcon,
   Trash2 as Trash,
@@ -57,6 +59,7 @@ export const Icons = {
   save: SaveIcon,
   refresh: RefreshCcw,
   reset: TimerResetIcon,
+  notifications: Bell,
   map: Map,
   globe: Globe2,
   close: X,
@@ -75,6 +78,7 @@ export const Icons = {
   page: File,
   media: Image,
   settings: Settings,
+  settingsSliders: SlidersVertical,
   billing: CreditCard,
   ellipsis: MoreVertical,
   add: Plus,
@@ -90,6 +94,21 @@ export const Icons = {
   laptop: Laptop,
   logout: LogOut,
   upload: Upload,
+  sidebarMenu: ({ ...props }: LucideProps) => (
+    <svg
+      aria-hidden="true"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        fillRule="evenodd"
+        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+        clipRule="evenodd"
+      ></path>
+    </svg>
+  ),
   facebook: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

@@ -28,9 +28,6 @@ export const getDefaultLinks = (isAdmin: boolean): SidebarLink[] => {
 export const additionalLinks: AdditionalLinks[] = [
   {
     title: "Extras",
-    links: [
-      { href: "/settings", title: "Settings", icon: Icons.settings },
-      { href: "/api/auth/signout", title: "Signout", icon: Icons.logout },
-    ],
+    links: [{ href: "/settings", title: "Settings", icon: Icons.settings }],
   },
 ]
