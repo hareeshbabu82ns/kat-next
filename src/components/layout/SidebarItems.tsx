@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 
 import { additionalLinks, getDefaultLinks } from "@/config/nav"
 import { cn } from "@/lib/utils"
+import { useSidebarStore } from "./WithNavSidebar"
 
 export interface SidebarLink {
   title: string
@@ -67,6 +68,7 @@ const SidebarLink = ({
   link: SidebarLink
   active: boolean
 }) => {
+  const { isOpen, setOpen } = useSidebarStore()
   return (
     <Link
       href={link.href}
@@ -74,6 +76,9 @@ const SidebarLink = ({
         "group flex items-center rounded-md p-2 text-base font-medium  hover:bg-popover  dark:hover:bg-gray-700",
         active ? "font-semibold text-primary" : ""
       )}
+      onClick={() => {
+        isOpen && setOpen(false)
+      }}
     >
       <div className="flex items-center gap-3">
         <link.icon className="size-6" />

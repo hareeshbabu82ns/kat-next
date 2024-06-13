@@ -1,5 +1,6 @@
+"use client"
 import Link from "next/link"
-import { auth } from "@/lib/auth"
+import { useSession } from "next-auth/react"
 import { avatarAltName } from "@/lib/utils"
 import AuthDropdownMenuItem from "./AuthDropdownMenuItem.client"
 import { Icons } from "../shared/icons"
@@ -14,9 +15,9 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
 
-const UserAvatarMenuButton = async () => {
-  const session = await auth()
-  if (!session || !session.user) return null
+const UserAvatarMenuButton = () => {
+  const { data: session, status } = useSession()
+  if (status === "loading" || !session || !session.user) return null
   return (
     <>
       <DropdownMenu>
