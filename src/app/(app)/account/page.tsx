@@ -1,9 +1,9 @@
-import { checkAuth, getUserAuth } from "@/lib/auth"
+import { auth } from "@/lib/auth"
 import UserSettings from "./UserSettings"
 
 export default async function Account() {
-  await checkAuth()
-  const { session } = await getUserAuth()
+  const session = await auth()
+  if (!session) return null
 
   return (
     <main className="flex flex-col gap-4">

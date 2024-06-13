@@ -4,12 +4,12 @@ import UserListItem from "@/components/auth/UserListItem"
 import PageHeader from "@/components/layout/PageHeader"
 import { Icons } from "@/components/shared/icons"
 import { buttonVariants } from "@/components/ui/button"
-import { getUserAuth } from "@/lib/auth"
+import { auth } from "@/lib/auth"
 import { cn } from "@/lib/utils"
 import { getUsers } from "./actions"
 
 export default async function Users() {
-  const { session } = await getUserAuth()
+  const session = await auth()
 
   const users = await getUsers()
 

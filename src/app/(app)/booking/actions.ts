@@ -1,12 +1,12 @@
 "use server"
 
 import { Booking, UserRole } from "@prisma/client"
-import { getUserAuth } from "@/lib/auth"
+import { auth } from "@/lib/auth"
 import { db } from "@/lib/db"
 
 // Booking actions
 export async function getBooking(id: string) {
-  const { session } = await getUserAuth()
+  const session = await auth()
   if (!session) throw new Error("No session found")
 
   const where: Record<string, unknown> = {}
@@ -30,7 +30,7 @@ export async function getBooking(id: string) {
 }
 
 export async function getBookings() {
-  const { session } = await getUserAuth()
+  const session = await auth()
   if (!session) throw new Error("No session found")
 
   if (session?.user.role !== UserRole.ADMIN) {

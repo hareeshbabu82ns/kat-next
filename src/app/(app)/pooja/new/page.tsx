@@ -5,7 +5,7 @@ import { z } from "zod"
 import EventForm from "@/components/events/EventForm"
 import PageHeader from "@/components/layout/PageHeader"
 import { siteConfig } from "@/config/site"
-import { getUserAuth } from "@/lib/auth"
+import { auth } from "@/lib/auth"
 import { EventInputSchema } from "@/lib/validations/event"
 
 const defaultPoojaEventData: z.infer<typeof EventInputSchema> = {
@@ -20,7 +20,7 @@ const defaultPoojaEventData: z.infer<typeof EventInputSchema> = {
 }
 
 const PoojaNewPage = async () => {
-  const { session } = await getUserAuth()
+  const session = await auth()
   if (session?.user.role !== UserRole.ADMIN) {
     throw new Error("Unauthorized")
   }

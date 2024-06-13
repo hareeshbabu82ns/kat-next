@@ -1,17 +1,17 @@
 import { UserRole } from "@prisma/client"
 import Link from "next/link"
+import { Session } from "next-auth"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-import { getUserAuth } from "@/lib/auth"
-import { AuthSession } from "@/lib/auth/utils"
+import { auth } from "@/lib/auth"
 import { avatarAltName } from "@/lib/utils"
 import AppTitleLogo from "./AppTitleLogo"
 import SidebarItems from "./SidebarItems"
 
 const Sidebar = async () => {
-  const session = await getUserAuth()
-  if (session.session === null) return null
+  const session = await auth()
+  if (session === null) return null
 
   return (
     <aside className="flex h-full flex-col justify-between bg-muted">
@@ -20,13 +20,11 @@ const Sidebar = async () => {
           <AppTitleLogo />
         </div>
         <div className="py-4 pl-4 pr-6 md:py-6">
-          <SidebarItems
-            isAdmin={session.session.user.role === UserRole.ADMIN}
-          />
+          <SidebarItems isAdmin={session.user.role === UserRole.ADMIN} />
         </div>
       </div>
       <div className="p-2">
-        <UserDetails session={session as AuthSession} />
+        <UserDetails session={session} />
       </div>
     </aside>
   )
@@ -34,9 +32,9 @@ const Sidebar = async () => {
 
 export default Sidebar
 
-const UserDetails = ({ session }: { session: AuthSession }) => {
-  if (session.session === null) return null
-  const { user } = session.session
+const UserDetails = ({ session }: { session: Session }) => {
+  if (session === null) return null
+  const { user } = session
 
   const name = user?.name ?? user?.email ?? ""
 

@@ -5,7 +5,7 @@ import EventDetails from "@/components/events/EventDetails"
 import PageHeader from "@/components/layout/PageHeader"
 import { Icons } from "@/components/shared/icons"
 import { buttonVariants } from "@/components/ui/button"
-import { getUserAuth } from "@/lib/auth"
+import { auth } from "@/lib/auth"
 import { cn } from "@/lib/utils"
 import { getEvent } from "../actions"
 import { UserRole } from "@prisma/client"
@@ -16,7 +16,7 @@ interface PoojaDetailsPageProps {
   }
 }
 const PoojaDetailsPage = async ({ params }: PoojaDetailsPageProps) => {
-  const { session } = await getUserAuth()
+  const session = await auth()
   const event = await getEvent(params.slug)
   if (!event) {
     notFound()

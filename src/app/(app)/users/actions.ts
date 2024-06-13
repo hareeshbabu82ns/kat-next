@@ -2,12 +2,12 @@
 
 import { UserRole } from "@prisma/client"
 import { z } from "zod"
-import { getUserAuth } from "@/lib/auth"
+import { auth } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { UserInputSchema } from "@/lib/validations/user"
 
 export async function getUser(id: string) {
-  const { session } = await getUserAuth()
+  const session = await auth()
   if (session?.user.id !== id && session?.user.role !== UserRole.ADMIN)
     throw new Error("User is not authorized to view this user")
 
@@ -16,7 +16,7 @@ export async function getUser(id: string) {
 }
 
 export async function getUsers() {
-  const { session } = await getUserAuth()
+  const session = await auth()
   if (!session?.user.role) throw new Error("User must be an Admin")
 
   const users = await db.user.findMany()
@@ -24,7 +24,7 @@ export async function getUsers() {
 }
 
 export async function deleteUser(id: string) {
-  const { session } = await getUserAuth()
+  const session = await auth()
   if (session?.user.role !== UserRole.ADMIN)
     throw new Error("User must be an Admin")
 
@@ -36,7 +36,7 @@ export async function updateUser(
   id: string,
   data: Partial<z.infer<typeof UserInputSchema>>
 ) {
-  const { session } = await getUserAuth()
+  const session = await auth()
   if (session?.user.id !== id && session?.user.role !== UserRole.ADMIN)
     throw new Error("User is not authorized to update this user")
 
@@ -51,7 +51,7 @@ export async function updateUser(
 }
 
 export async function createUser(data: z.infer<typeof UserInputSchema>) {
-  const { session } = await getUserAuth()
+  const session = await auth()
   if (session?.user.role !== UserRole.ADMIN)
     throw new Error("User must be an Admin")
 

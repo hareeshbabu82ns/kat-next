@@ -4,13 +4,13 @@ import EventTile from "@/components/events/EventTile"
 import PageHeader from "@/components/layout/PageHeader"
 import { Icons } from "@/components/shared/icons"
 import { buttonVariants } from "@/components/ui/button"
-import { getUserAuth } from "@/lib/auth"
+import { auth } from "@/lib/auth"
 import SeedUploadButton from "@/lib/db/seed-upload-btn"
 import { cn } from "@/lib/utils"
 import { getEvents } from "./actions"
 
 export default async function Pooja() {
-  const { session } = await getUserAuth()
+  const session = await auth()
 
   const events = await getEvents()
 

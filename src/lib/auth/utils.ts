@@ -27,18 +27,6 @@ declare module "next-auth/jwt" {
   }
 }
 
-export type AuthSession = {
-  session: {
-    user: {
-      id: string
-      name?: string
-      email?: string
-      role: UserRole
-      image?: string
-    }
-  } | null
-}
-
 // this is partial to be used in middleware
 // need to add additional providers before adding to NextAuth
 export const authOptionsPartial: NextAuthConfig = {

@@ -2,11 +2,11 @@ import { UserRole } from "@prisma/client"
 import Link from "next/link"
 import React from "react"
 import BookingTile from "@/components/booking/BookingTile"
-import { getUserAuth } from "@/lib/auth"
+import { auth } from "@/lib/auth"
 import { getBookings } from "../booking/actions"
 
 const Bookings = async () => {
-  const { session } = await getUserAuth()
+  const session = await auth()
   const bookings = await getBookings()
 
   return (

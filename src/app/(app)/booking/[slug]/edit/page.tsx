@@ -1,10 +1,10 @@
+import { UserRole } from "@prisma/client"
 import { notFound } from "next/navigation"
 import { getBooking } from "@/app/(app)/booking/actions"
 import BookingForm from "@/components/booking/BookingForm"
 import PageHeader from "@/components/layout/PageHeader"
-import { getUserAuth } from "@/lib/auth"
+import { auth } from "@/lib/auth"
 import { formatCurrency, formatDuration } from "@/lib/utils"
-import { UserRole } from "@prisma/client"
 
 interface BookingEditPageProps {
   params: {
@@ -13,7 +13,7 @@ interface BookingEditPageProps {
 }
 
 const BookingEditPage = async ({ params }: BookingEditPageProps) => {
-  const auth = await getUserAuth()
+  const session = await auth()
   const booking = await getBooking(params.slug)
   if (!booking) {
     notFound()
@@ -47,7 +47,7 @@ const BookingEditPage = async ({ params }: BookingEditPageProps) => {
       <BookingForm
         bookingId={booking.id}
         eventData={booking.event}
-        isAdmin={auth.session?.user.role === UserRole.ADMIN}
+        isAdmin={session?.user.role === UserRole.ADMIN}
         data={data}
         userData={userData}
       />

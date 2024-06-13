@@ -4,7 +4,7 @@ import React from "react"
 import { z } from "zod"
 import BookingForm from "@/components/booking/BookingForm"
 import PageHeader from "@/components/layout/PageHeader"
-import { getUserAuth } from "@/lib/auth"
+import { auth } from "@/lib/auth"
 import { formatCurrency, formatDuration } from "@/lib/utils"
 import { BookingInputSchema } from "@/lib/validations/booking"
 import { getEvent } from "../../actions"
@@ -26,7 +26,7 @@ const defaultBookingData: z.infer<typeof BookingInputSchema> = {
 }
 
 const BookingPage = async ({ params }: BookingPageProps) => {
-  const auth = await getUserAuth()
+  const session = await auth()
   const event = await getEvent(params.slug)
   if (!event) {
     notFound()
@@ -45,14 +45,12 @@ const BookingPage = async ({ params }: BookingPageProps) => {
     ...defaultBookingData,
     eventId: event.id,
     userEmail:
-      auth.session?.user.role === UserRole.ADMIN
-        ? ""
-        : auth.session?.user.email || "",
-    paidAmount: auth.session?.user.role === UserRole.ADMIN ? event.price : 0,
+      session?.user.role === UserRole.ADMIN ? "" : session?.user.email || "",
+    paidAmount: session?.user.role === UserRole.ADMIN ? event.price : 0,
   }
   const userData = {
-    name: auth.session?.user.name || "",
-    email: auth.session?.user.email || "",
+    name: session?.user.name || "",
+    email: session?.user.email || "",
     telephone: "",
   }
 
@@ -61,7 +59,7 @@ const BookingPage = async ({ params }: BookingPageProps) => {
       <PageHeader title={eventTitle} />
       <BookingForm
         eventData={event}
-        isAdmin={auth.session?.user.role === UserRole.ADMIN}
+        isAdmin={session?.user.role === UserRole.ADMIN}
         data={data}
         userData={userData}
       />

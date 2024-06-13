@@ -62,7 +62,7 @@ export const authOptions: NextAuthConfig = {
 
       if (trigger === "signUp") {
         // new user
-        console.log("jwt signUp", { token, user, rest })
+        // console.log("jwt signUp", { token, user, rest })
         if (user) {
           const name = user.name || user.email || ""
           try {
@@ -98,14 +98,3 @@ export const authOptions: NextAuthConfig = {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth(authOptions)
-
-export const getUserAuth = async () => {
-  const session = await auth()
-  return { session }
-}
-
-export const checkAuth = async () => {
-  const { session } = await getUserAuth()
-  // if (!session) redirect("/sign-in")
-  if (!session) throw new Error("Unauthorized")
-}

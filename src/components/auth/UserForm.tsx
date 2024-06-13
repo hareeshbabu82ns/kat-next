@@ -155,12 +155,14 @@ const UserForm = ({
               label="Telephone"
               type="number"
             />
-            <FormCheckbox
-              control={form.control}
-              name="isAdmin"
-              label="isAdmin"
-              disabled={!isAdmin}
-            />
+            {isAdmin && (
+              <FormCheckbox
+                control={form.control}
+                name="isAdmin"
+                label="isAdmin"
+                disabled={!isAdmin}
+              />
+            )}
           </div>
           <div className="col-span-2">{actionButtons}</div>
         </div>
