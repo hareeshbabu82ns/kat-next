@@ -2,8 +2,8 @@ import { UserRole } from "@prisma/client"
 import Link from "next/link"
 import React from "react"
 import { getBookings } from "@/app/(app)/bookings/actions"
-import BookingTile from "@/components/bookings/BookingTile"
 import { auth } from "@/lib/auth"
+import BookingListItem from "./BookingListItem"
 
 const Bookings = async () => {
   const session = await auth()
@@ -11,7 +11,7 @@ const Bookings = async () => {
 
   return (
     <div className="flex-1">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 @xl/main:grid-cols-2 @4xl/main:grid-cols-3">
         {bookings.map((booking) => {
           const eventData = {
             ...booking.event,
@@ -26,7 +26,7 @@ const Bookings = async () => {
 
           return (
             <Link href={`/bookings/${booking.id}/edit`} key={booking.id}>
-              <BookingTile
+              <BookingListItem
                 event={eventData}
                 user={userData}
                 date={booking.date}

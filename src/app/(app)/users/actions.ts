@@ -6,6 +6,14 @@ import { auth } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { UserInputSchema } from "@/lib/validations/user"
 
+export async function getUserByEmail(email: string) {
+  const session = await auth()
+  if (session?.user.email !== email && session?.user.role !== UserRole.ADMIN)
+    throw new Error("User is not authorized to view this user")
+
+  const user = await db.user.findUnique({ where: { email } })
+  return user
+}
 export async function getUser(id: string) {
   const session = await auth()
   if (session?.user.id !== id && session?.user.role !== UserRole.ADMIN)

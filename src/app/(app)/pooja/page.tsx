@@ -33,8 +33,8 @@ export default async function Pooja() {
           )}
         </div>
       </PageHeader>
-      <div className="flex-1">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+      <div className="flex-1 @md/main:container">
+        <div className="grid grid-cols-1 gap-4 @lg/main:grid-cols-2 @3xl/main:grid-cols-3 @5xl/main:grid-cols-4 @7xl/main:grid-cols-5">
           {events.map((event) => (
             <Link href={`/pooja/${event.id}`} key={event.id}>
               <EventTile

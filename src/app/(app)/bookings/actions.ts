@@ -43,7 +43,7 @@ export async function getBookings() {
         userEmail: session.user.email || "",
       },
       include: { event: true },
-      orderBy: { date: "desc" },
+      orderBy: { date: "asc" },
     })
     return bookings.map((booking) => ({
       ...booking,
@@ -56,7 +56,7 @@ export async function getBookings() {
   } else {
     const bookings = await db.booking.findMany({
       include: { event: true, user: true },
-      orderBy: { date: "desc" },
+      orderBy: { date: "asc" },
     })
     return bookings
   }

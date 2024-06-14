@@ -14,6 +14,7 @@ import {
   deleteBooking,
   updateBooking,
 } from "@/app/(app)/bookings/actions"
+import { getUserByEmail } from "@/app/(app)/users/actions"
 import { BookingInputSchema } from "@/lib/validations/booking"
 import FormCheckbox from "../inputs/FormCheckbox"
 import FormInputDate from "../inputs/FormInputDate"
@@ -83,6 +84,16 @@ const BookingForm = ({
         userName: userData?.name || "",
         notes: data.notes || "",
       }
+      // check if user email exists if admin
+      if (isAdmin && data.userEmail) {
+        const dbUser = await getUserByEmail(data.userEmail)
+        if (!dbUser) {
+          toast({ title: "User not found", variant: "destructive" })
+          return
+        }
+        changeData.userName = dbUser.name || ""
+      }
+
       const res = await createBooking(changeData)
       if (res?.id) {
         toast({ title: "Booking created successfully" })
