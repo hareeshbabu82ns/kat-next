@@ -70,7 +70,7 @@ export const ReminderBookingEmail = ({
           Reach our Admin team in case of any concerns.
         </Text>
         <Section style={btnContainer}>
-          <Button style={button} href={`${baseUrl}/booking/${bookingId}/edit`}>
+          <Button style={button} href={`${baseUrl}/bookings/${bookingId}/edit`}>
             View Booking
           </Button>
         </Section>

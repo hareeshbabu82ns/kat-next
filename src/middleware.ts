@@ -4,7 +4,7 @@ import { authOptionsPartial } from "@/lib/auth/utils"
 import {
   apiRoutePrefix,
   DEFAULT_LOGIN_REDIRECT,
-  privateRoutes,
+  // privateRoutes,
   publicRoutes,
 } from "./config/routes"
 

@@ -5,7 +5,7 @@ export const privateRoutes = [
   "/users",
   "/settings",
   "/pooja",
-  "/booking",
+  "/bookings",
 ]
 
 export const apiRoutePrefix = "/api/auth"

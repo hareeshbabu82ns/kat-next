@@ -56,7 +56,7 @@ export const NewBookingEmail = ({
           Our Admin team will connect with you shortly to confirm.
         </Text>
         <Section style={btnContainer}>
-          <Button style={button} href={`${baseUrl}/booking/${bookingId}/edit`}>
+          <Button style={button} href={`${baseUrl}/bookings/${bookingId}/edit`}>
             View Booking
           </Button>
         </Section>

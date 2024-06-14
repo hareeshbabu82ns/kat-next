@@ -1,9 +1,9 @@
 import { UserRole } from "@prisma/client"
 import Link from "next/link"
 import React from "react"
-import BookingTile from "@/components/booking/BookingTile"
+import { getBookings } from "@/app/(app)/bookings/actions"
+import BookingTile from "@/components/bookings/BookingTile"
 import { auth } from "@/lib/auth"
-import { getBookings } from "../booking/actions"
 
 const Bookings = async () => {
   const session = await auth()
@@ -25,7 +25,7 @@ const Bookings = async () => {
           }
 
           return (
-            <Link href={`/booking/${booking.id}/edit`} key={booking.id}>
+            <Link href={`/bookings/${booking.id}/edit`} key={booking.id}>
               <BookingTile
                 event={eventData}
                 user={userData}

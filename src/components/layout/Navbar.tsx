@@ -1,7 +1,7 @@
 "use client"
 
 import { MenuIcon } from "lucide-react"
-import { usePathname } from "next/navigation"
+// import { usePathname } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
 

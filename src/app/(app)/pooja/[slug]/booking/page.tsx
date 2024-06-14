@@ -2,12 +2,12 @@ import { UserRole } from "@prisma/client"
 import { notFound } from "next/navigation"
 import React from "react"
 import { z } from "zod"
-import BookingForm from "@/components/booking/BookingForm"
+import { getEvent } from "@/app/(app)/pooja/actions"
+import BookingForm from "@/components/bookings/BookingForm"
 import PageHeader from "@/components/layout/PageHeader"
 import { auth } from "@/lib/auth"
 import { formatCurrency, formatDuration } from "@/lib/utils"
 import { BookingInputSchema } from "@/lib/validations/booking"
-import { getEvent } from "../../actions"
 
 interface BookingPageProps {
   params: {

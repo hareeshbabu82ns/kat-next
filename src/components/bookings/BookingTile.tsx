@@ -87,7 +87,8 @@ const BookingTile = ({
           {event.title}
         </div>
         {isAdmin && (
-          <div className="text-md line-clamp-1 font-semibold group-hover:text-primary">
+          <div className="text-md line-clamp-1 flex items-center gap-1 font-semibold group-hover:text-primary">
+            <Icons.user className="size-4" />
             {user.name}
           </div>
         )}

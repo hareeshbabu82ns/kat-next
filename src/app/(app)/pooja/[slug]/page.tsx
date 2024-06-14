@@ -1,3 +1,4 @@
+import { UserRole } from "@prisma/client"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import React from "react"
@@ -8,7 +9,6 @@ import { buttonVariants } from "@/components/ui/button"
 import { auth } from "@/lib/auth"
 import { cn } from "@/lib/utils"
 import { getEvent } from "../actions"
-import { UserRole } from "@prisma/client"
 
 interface PoojaDetailsPageProps {
   params: {

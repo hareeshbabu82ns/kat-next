@@ -13,7 +13,7 @@ import {
   createBooking,
   deleteBooking,
   updateBooking,
-} from "@/app/(app)/booking/actions"
+} from "@/app/(app)/bookings/actions"
 import { BookingInputSchema } from "@/lib/validations/booking"
 import FormCheckbox from "../inputs/FormCheckbox"
 import FormInputDate from "../inputs/FormInputDate"
@@ -86,7 +86,7 @@ const BookingForm = ({
       const res = await createBooking(changeData)
       if (res?.id) {
         toast({ title: "Booking created successfully" })
-        router.replace(`/booking/${res.id}/edit`)
+        router.replace(`/bookings/${res.id}/edit`)
       }
     } else {
       const changeData: Partial<Booking> = {}
