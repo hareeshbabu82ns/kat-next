@@ -1,8 +1,12 @@
 "use server"
 
 import { Booking, UserRole } from "@prisma/client"
+import NewBookingEmail from "@/components/emails/NewBookingEmail"
+import ReminderBookingEmail from "@/components/emails/ReminderBookingEmail"
+import UpdateBookingEmail from "@/components/emails/UpdateBookingEmail"
 import { auth } from "@/lib/auth"
 import { db } from "@/lib/db"
+import { sendMail } from "@/lib/email/actions"
 
 // Booking actions
 export async function getBooking(id: string) {
@@ -70,5 +74,80 @@ export async function updateBooking(id: string, data: Partial<Booking>) {
 
 export async function createBooking(data: Omit<Booking, "id">) {
   const booking = await db.booking.create({ data })
+  try {
+    await sendMail({
+      to: [booking.userEmail],
+      subject: `Booking for ${booking.eventTitle}`,
+      react: NewBookingEmail({
+        bookingId: booking.id,
+        bookingTime: booking.date,
+        eventTitle: booking.eventTitle,
+        userName: booking.userName || booking.userEmail,
+      }),
+    })
+  } catch (error) {
+    console.error("new booking sendMail error", {
+      to: booking.userEmail,
+      title: booking.eventTitle,
+      error,
+    })
+  }
   return booking
+}
+
+export async function bookingNotifyMail(id: string, includeAdmins?: boolean) {
+  const booking = await db.booking.findUnique({ where: { id } })
+  if (!booking) throw new Error("Booking not found")
+  try {
+    await sendMail({
+      to: [booking.userEmail],
+      subject: `Reminder: Booking for ${booking.eventTitle}`,
+      react: ReminderBookingEmail({
+        bookingId: booking.id,
+        bookingTime: booking.date,
+        eventTitle: booking.eventTitle,
+        userName: booking.userName || booking.userEmail,
+        bookingConfirmed: booking.confirmed,
+        bookingPaid: booking.paid,
+        paidAmount: booking.paidAmount,
+      }),
+      includeAdmins,
+    })
+  } catch (error) {
+    console.error("reminder booking sendMail error", {
+      to: booking.userEmail,
+      title: booking.eventTitle,
+      bookingId: booking.id,
+      error,
+    })
+  }
+}
+
+export async function bookingStatusMail(
+  booking: Omit<Booking, "createdAt" | "updatedAt">,
+  includeAdmins?: boolean
+) {
+  try {
+    await sendMail({
+      to: [booking.userEmail],
+      subject: `Booking for ${booking.eventTitle} Updated`,
+      react: UpdateBookingEmail({
+        bookingId: booking.id,
+        bookingTime: booking.date,
+        eventTitle: booking.eventTitle,
+        userName: booking.userName || booking.userEmail,
+        bookingConfirmed: booking.confirmed,
+        bookingPaid: booking.paid,
+        paidAmount: booking.paidAmount,
+      }),
+      includeAdmins,
+    })
+  } catch (error) {
+    console.error("update booking sendMail error", {
+      to: booking.userEmail,
+      title: booking.eventTitle,
+      bookingId: booking.id,
+      error,
+    })
+  }
 }

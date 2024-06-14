@@ -34,6 +34,7 @@ interface FormInputDateProps extends InputProps {
   className?: string
   withTime?: boolean
   disabled?: boolean
+  dateDisabledMatcher?: (date: Date) => boolean
 }
 
 const FormInputDate = ({
@@ -44,7 +45,13 @@ const FormInputDate = ({
   className,
   withTime,
   disabled,
+  dateDisabledMatcher,
 }: FormInputDateProps) => {
+  const finalDateDisabledMatcher =
+    dateDisabledMatcher ||
+    ((date) =>
+      date > addYears(new Date(), 10) || date < subYears(new Date(), 1))
+
   return (
     <FormField
       control={control}
@@ -93,10 +100,7 @@ const FormInputDate = ({
                   mode="single"
                   selected={field.value}
                   onSelect={field.onChange}
-                  disabled={(date) =>
-                    date > addYears(new Date(), 10) ||
-                    date < subYears(new Date(), 1)
-                  }
+                  disabled={finalDateDisabledMatcher}
                   initialFocus
                 />
                 {withTime && (

@@ -48,7 +48,7 @@ export const authOptions: NextAuthConfig = {
   callbacks: {
     // jwt is called with `user` on sign-in, and with `token` on subsequent requests
     // so save user details in token for later use
-    jwt: async ({ token, user, trigger, ...rest }) => {
+    jwt: async ({ token, user, trigger }) => {
       // console.log("jwt callback", { token, user,  trigger, rest })
       if (user) {
         // User is available during sign-in

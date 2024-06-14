@@ -2,11 +2,14 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Booking } from "@prisma/client"
+import { startOfDay } from "date-fns"
 import { useRouter } from "next/navigation"
 import React from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import {
+  bookingNotifyMail,
+  bookingStatusMail,
   createBooking,
   deleteBooking,
   updateBooking,
@@ -26,7 +29,7 @@ interface BookingFormProps {
   isAdmin?: boolean
   bookingId?: string
   data: z.infer<typeof BookingInputSchema>
-  eventData?: { title?: string }
+  eventData?: { title?: string; thumbnail?: string | null }
   updating?: boolean
   userData?: { name?: string; email?: string; telephone?: string }
 }
@@ -63,6 +66,12 @@ const BookingForm = ({
     }
   }
 
+  async function onReminder() {
+    if (!bookingId) return
+    await bookingNotifyMail(bookingId, false)
+    toast({ title: "Reminder sent successfully" })
+  }
+
   async function onSubmit(data: z.infer<typeof BookingInputSchema>) {
     // onFormSubmit && onFormSubmit(changeData)
     if (!bookingId) {
@@ -92,6 +101,7 @@ const BookingForm = ({
 
       const res = await updateBooking(bookingId, changeData)
       if (res) {
+        if (isAdmin) await bookingStatusMail(res, false)
         toast({ title: "Booking updated successfully" })
         router.refresh()
       }
@@ -100,6 +110,17 @@ const BookingForm = ({
 
   const actionButtons = (
     <div className="grid grid-cols-2 justify-end gap-4 sm:flex sm:flex-row">
+      {bookingId && isAdmin && (
+        <Button
+          variant="secondary"
+          type="button"
+          disabled={updating}
+          onClick={onReminder}
+        >
+          <Icons.email className="mr-2 size-4" />
+          Reminder
+        </Button>
+      )}
       <Button
         variant="secondary"
         type="button"
@@ -148,6 +169,9 @@ const BookingForm = ({
               name="date"
               label="Booking Date"
               withTime
+              dateDisabledMatcher={(date) =>
+                startOfDay(date) < startOfDay(new Date())
+              }
             />
           </div>
           <div className="col-span-2 grid-cols-subgrid space-y-2 md:col-span-1">
