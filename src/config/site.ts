@@ -11,6 +11,7 @@ export type SiteConfig = {
   }
   defaultUserImg: string
   defaultEventImg: string
+  emailVerificationDuration: number
 }
 
 export const siteConfig: SiteConfig = {
@@ -26,4 +27,5 @@ export const siteConfig: SiteConfig = {
   },
   defaultUserImg: "/default-om_256.png",
   defaultEventImg: "/kat-logo.png",
+  emailVerificationDuration: 15,
 }

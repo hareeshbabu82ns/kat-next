@@ -23,6 +23,7 @@ import {
   Image,
   Laptop,
   Loader2,
+  LockKeyholeIcon,
   LogOut,
   type Icon as LucideIcon,
   LucideProps,
@@ -95,6 +96,7 @@ export const Icons = {
   moon: Moon,
   laptop: Laptop,
   logout: LogOut,
+  login: LockKeyholeIcon,
   upload: Upload,
   sidebarMenu: ({ ...props }: LucideProps) => (
     <svg

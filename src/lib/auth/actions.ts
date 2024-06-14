@@ -2,7 +2,10 @@
 
 // import { revalidatePath } from "next/cache"
 // import { redirect } from "next/navigation"
+import { differenceInMinutes, format, subDays } from "date-fns"
 import { z } from "zod"
+import { siteConfig } from "@/config/site"
+import { db } from "../db"
 import { UserSigninSchema } from "../validations/user"
 import { signIn as naSignIn, signOut as naSignOut } from "."
 
@@ -22,6 +25,19 @@ export const signInCredentials = async (
 }
 
 export const signInEmail = async (email: string) => {
+  // const dbUser = await db.user.findFirst({ where: { email } })
+  // if (!dbUser) throw new Error("User not found with " + email)
+  const dbToken = await db.verificationToken.findFirst({
+    where: { identifier: email },
+  })
+  if (dbToken) {
+    const tokenGenDate = subDays(dbToken?.expires || new Date(), 1)
+    const diffMins = differenceInMinutes(new Date(), tokenGenDate)
+    if (dbToken && diffMins < siteConfig.emailVerificationDuration)
+      throw new Error(
+        `Token generated for ${email} at ${format(tokenGenDate, "PPP p")}. Try after ${siteConfig.emailVerificationDuration} mins`
+      )
+  }
   return naSignIn("resend", { email, redirect: false })
 }
 

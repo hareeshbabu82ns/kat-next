@@ -1,9 +1,11 @@
 "use client"
-import { LockKeyholeIcon } from "lucide-react"
+import { TooltipTrigger } from "@radix-ui/react-tooltip"
+import Link from "next/link"
 import { signIn } from "next-auth/react"
 import { useState } from "react"
+import { Icons } from "@/components/shared/icons"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -13,10 +15,30 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Tooltip, TooltipContent } from "@/components/ui/tooltip"
+import { useToast } from "@/components/ui/use-toast"
 import { signInEmail } from "@/lib/auth/actions"
+import { cn } from "@/lib/utils"
 
 export default function LoginForm() {
   const [email, setEmail] = useState("")
+  const [emailToken, setEmailToken] = useState("")
+  const { toast } = useToast()
+
+  const sendEmailToken = async () => {
+    try {
+      await signInEmail(email)
+      toast({
+        title:
+          "Token sent to email, if not received in 15min please contact Admin",
+      })
+    } catch (e: any) {
+      toast({
+        title: e?.message || "Error sending email",
+        variant: "destructive",
+      })
+    }
+  }
 
   return (
     <Card className="min-w-lg m-auto rounded-lg p-2 md:min-w-[500px]">
@@ -34,32 +56,70 @@ export default function LoginForm() {
       </CardHeader>
       <CardContent>
         <div className="grid gap-4">
-          <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="m@example.com"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          <div className="flex flex-row gap-2">
+            <div className="grid grow gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
+              <div className="h-3"></div>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="ghost" size="icon" onClick={sendEmailToken}>
+                    <Icons.email className="size-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Send Token</TooltipContent>
+              </Tooltip>
+            </div>
           </div>
-          <Button
-            variant="outline"
-            className="w-full"
-            onClick={async () => {
-              const res = await signInEmail(email)
-              console.log("signInEmail", res)
-            }}
-          >
-            Login with Email
-          </Button>
+
+          <div className="flex flex-row gap-2">
+            <div className="grid grow gap-2">
+              <Label htmlFor="emailToken">Token</Label>
+              <Input
+                id="emailToken"
+                type="emailToken"
+                placeholder="Enter Token from email"
+                required
+                value={emailToken}
+                onChange={(e) => setEmailToken(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
+              <div className="h-3"></div>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={
+                      emailToken && email
+                        ? `/api/auth/callback/resend?callbackUrl=/dashboard&token=${emailToken}&email=${email}`
+                        : ""
+                    }
+                    className={cn(
+                      buttonVariants({ variant: "ghost", size: "icon" })
+                    )}
+                  >
+                    <Icons.login className="size-4" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>Login with Token</TooltipContent>
+              </Tooltip>
+            </div>
+          </div>
+
           {/* divider */}
           <div className="flex w-full items-center py-4">
             <div className="h-px flex-1 bg-primary" />
             <span className="px-2 text-sm text-primary">
-              <LockKeyholeIcon className="size-4" />
+              <Icons.login className="size-4" />
             </span>
             <div className="h-px flex-1 bg-primary" />
           </div>

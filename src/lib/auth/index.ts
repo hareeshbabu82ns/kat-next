@@ -4,6 +4,7 @@ import { Adapter } from "next-auth/adapters"
 // import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
 import ResendProvider from "next-auth/providers/resend"
+import MagicLoginLinkEmail from "@/components/emails/MagicLoginLinkEmail"
 import WelcomeEmail from "@/components/emails/WelcomeEmail"
 import { siteConfig } from "@/config/site"
 import { authOptionsPartial } from "@/lib/auth/utils"
@@ -20,6 +21,21 @@ export const authOptions: NextAuthConfig = {
     ResendProvider({
       name: "Email (WebOnly)",
       from: env.SMTP_FROM,
+      async sendVerificationRequest(params) {
+        const { identifier: to, url } = params
+        const dbUser = await db.user.findFirst({
+          where: { email: to },
+        })
+        await sendMail({
+          to: [to],
+          subject: `Sign in to ${siteConfig.name}`,
+          react: MagicLoginLinkEmail({
+            name: dbUser?.name,
+            email: dbUser?.email || to,
+            url,
+          }),
+        })
+      },
     }),
     GoogleProvider,
     // CredentialsProvider({
