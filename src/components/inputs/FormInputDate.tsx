@@ -35,6 +35,7 @@ interface FormInputDateProps extends InputProps {
   withTime?: boolean
   disabled?: boolean
   dateDisabledMatcher?: (date: Date) => boolean
+  dateFormatter?: (date: Date) => string
 }
 
 const FormInputDate = ({
@@ -46,11 +47,13 @@ const FormInputDate = ({
   withTime,
   disabled,
   dateDisabledMatcher,
+  dateFormatter,
 }: FormInputDateProps) => {
   const finalDateDisabledMatcher =
     dateDisabledMatcher ||
     ((date) =>
       date > addYears(new Date(), 10) || date < subYears(new Date(), 1))
+  const finalDateFormatter = dateFormatter || ((date) => format(date, "PPP"))
 
   return (
     <FormField
@@ -72,7 +75,7 @@ const FormInputDate = ({
                     disabled={field.disabled || disabled}
                   >
                     {field.value ? (
-                      format(field.value, "PPP")
+                      finalDateFormatter(field.value)
                     ) : (
                       <span>{label}</span>
                     )}

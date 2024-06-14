@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Booking } from "@prisma/client"
-import { startOfDay } from "date-fns"
+import { format, startOfDay } from "date-fns"
 import { useRouter } from "next/navigation"
 import React from "react"
 import { useForm } from "react-hook-form"
@@ -169,6 +169,7 @@ const BookingForm = ({
               name="date"
               label="Booking Date"
               withTime
+              dateFormatter={(date) => format(date, "PPP p")}
               dateDisabledMatcher={(date) =>
                 startOfDay(date) < startOfDay(new Date())
               }

@@ -48,16 +48,14 @@ const EventDetails = ({ data }: EventDetailsProps) => {
                 From:
               </td>
               <td className="font-semibold">
-                {format(data.dateFrom, "PPP HH:mm")}
+                {format(data.dateFrom, "PPP p")}
               </td>
             </tr>
             <tr>
               <td className="min-w-[100px] text-sm text-muted-foreground">
                 To:
               </td>
-              <td className="font-semibold">
-                {format(data.dateTo, "PPP HH:mm")}
-              </td>
+              <td className="font-semibold">{format(data.dateTo, "PPP p")}</td>
             </tr>
           </tbody>
         </table>

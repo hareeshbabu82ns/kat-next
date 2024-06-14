@@ -46,7 +46,7 @@ export const NewBookingEmail = ({
         </Text>
         <Text style={paragraph}>
           <b>Time: </b>
-          {format(bookingTime, "PPP HH:mm")}
+          {format(bookingTime, "PPP p")}
         </Text>
         <Text style={paragraph}>
           <b>User: </b>

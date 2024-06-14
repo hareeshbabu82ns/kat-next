@@ -14,6 +14,11 @@ export const getDefaultLinks = (isAdmin: boolean): SidebarLink[] => {
       title: "Pooja",
       icon: Icons.pooja,
     },
+    {
+      href: "/bookings",
+      title: "Bookings",
+      icon: Icons.booking,
+    },
   ]
   if (isAdmin) {
     links.push({
