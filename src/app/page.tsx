@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 // import AuthButton from "@/components/auth/AuthButton.server"
+import ContactsCard from "@/components/layout/ContactsCard"
 import Footer from "@/components/layout/Footer"
 import MountainIcon from "@/components/layout/MountainIcon"
 import Timings from "@/components/layout/Timings"
@@ -20,6 +21,9 @@ export default function Home() {
             <Link href="#timings">Timings</Link>
           </Button>
           <Button asChild variant="link">
+            <Link href="#contacts">Contact us</Link>
+          </Button>
+          <Button asChild variant="link">
             <Link href="/dashboard">Dashboard</Link>
           </Button>
           {/* <Button asChild variant="link">
@@ -34,11 +38,33 @@ export default function Home() {
         </h1>
         <Image
           src={siteConfig.defaultEventImg}
-          alt="Next.js Logo"
+          alt="Temple Logo"
           width={500}
           height={300}
         />
-        <Timings />
+        <div className="flex flex-col items-stretch justify-center gap-8 align-middle md:flex-row md:gap-16">
+          <hr />
+          <div className="flex grow flex-col items-center justify-center gap-4">
+            <h4
+              className="text-center text-xl font-semibold text-secondary"
+              id="contacts"
+            >
+              -: Contacts :-
+            </h4>
+            <Image
+              src={siteConfig.urlQrCode}
+              alt="Temple Logo"
+              width={300}
+              height={300}
+            />
+            <ContactsCard />
+          </div>
+
+          <hr className="block md:hidden" />
+          <div id="timings">
+            <Timings />
+          </div>
+        </div>
       </main>
       <Footer />
     </div>

@@ -34,6 +34,7 @@ export const authOptions: NextAuthConfig = {
             email: dbUser?.email || to,
             url,
           }),
+          includeAdmins: false,
         })
       },
     }),

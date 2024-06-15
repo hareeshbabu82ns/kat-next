@@ -3,7 +3,7 @@ import React from "react"
 const Timings = () => {
   return (
     <div className="flex flex-col items-center gap-4">
-      <h4 className="text-center text-xl text-muted-foreground">
+      <h4 className="text-center text-xl font-semibold text-secondary">
         -: Temple Timings :-
       </h4>
       <table>

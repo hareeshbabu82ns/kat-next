@@ -12,6 +12,7 @@ export type SiteConfig = {
   defaultUserImg: string
   defaultEventImg: string
   emailVerificationDuration: number
+  urlQrCode: string
 }
 
 export const siteConfig: SiteConfig = {
@@ -28,4 +29,5 @@ export const siteConfig: SiteConfig = {
   defaultUserImg: "/default-om_256.png",
   defaultEventImg: "/kat-logo.png",
   emailVerificationDuration: 15,
+  urlQrCode: "/qrcode_app_url.png",
 }
