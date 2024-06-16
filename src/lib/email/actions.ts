@@ -18,15 +18,18 @@ export async function sendMail({
 }) {
   const adminEmails = env.ADMIN_EMAILS.split(",")
   const adminUsers = await db.user.findMany({ where: { role: UserRole.ADMIN } })
-  adminUsers.forEach((user) => {
-    if (user.email && !adminEmails.includes(user.email)) {
-      adminEmails.push(user.email)
-    }
-  })
-  const finalCC = includeAdmins ? adminEmails.splice(0, 2) : [] // send to first 2 admins
+  if (env.NODE_ENV !== "development") {
+    adminUsers.forEach((user) => {
+      if (user.email && !adminEmails.includes(user.email)) {
+        adminEmails.push(user.email)
+      }
+    })
+  }
+  const finalCC = includeAdmins ? adminEmails.splice(0, 3) : [] // send to first 3 admins
+  // console.log({ finalCC, env: env.NODE_ENV })
 
   const data = await resend.emails.send({
-    from: `SriKarumariAmmanCalgary Temple <${env.SMTP_FROM}>`,
+    from: `Calgary Srithevi Karumariamman Temple <${env.SMTP_FROM}>`,
     to: [...to],
     cc: finalCC,
     subject: subject,

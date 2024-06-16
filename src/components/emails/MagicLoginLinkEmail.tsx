@@ -14,6 +14,7 @@ import {
 } from "@react-email/components"
 import * as React from "react"
 import { siteConfig } from "@/config/site"
+import { formatPhoneNumber } from "@/lib/utils"
 
 interface MagicLoginLinkEmailProps {
   name?: string | null
@@ -82,6 +83,7 @@ export const MagicLoginLinkEmail = ({
           </Text>
           <Hr style={hr} />
           <Text style={footer}>{siteConfig.address}</Text>
+          <Text style={footer}>{formatPhoneNumber(siteConfig.links.tel)}</Text>
         </Container>
       </Body>
     </Html>
@@ -89,7 +91,9 @@ export const MagicLoginLinkEmail = ({
 }
 
 MagicLoginLinkEmail.PreviewProps = {
-  name: "Alan",
+  name: "User Name",
+  email: "user@gmail.com",
+  url: "https://subdomain.domain.com/resend?token=testtoken",
 } as MagicLoginLinkEmailProps
 
 export default MagicLoginLinkEmail

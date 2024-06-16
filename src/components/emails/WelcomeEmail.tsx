@@ -13,6 +13,7 @@ import {
 } from "@react-email/components"
 import * as React from "react"
 import { siteConfig } from "@/config/site"
+import { formatPhoneNumber } from "@/lib/utils"
 
 interface WelcomeEmailProps {
   name: string
@@ -47,13 +48,14 @@ export const WelcomeEmail = ({ name }: WelcomeEmailProps) => (
         </Text>
         <Hr style={hr} />
         <Text style={footer}>{siteConfig.address}</Text>
+        <Text style={footer}>{formatPhoneNumber(siteConfig.links.tel)}</Text>
       </Container>
     </Body>
   </Html>
 )
 
 WelcomeEmail.PreviewProps = {
-  name: "Alan",
+  name: "User Name",
 } as WelcomeEmailProps
 
 export default WelcomeEmail

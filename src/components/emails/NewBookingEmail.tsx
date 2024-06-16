@@ -13,6 +13,7 @@ import {
 import { format } from "date-fns"
 import * as React from "react"
 import { siteConfig } from "@/config/site"
+import { formatPhoneNumber } from "@/lib/utils"
 
 interface NewBookingEmailProps {
   bookingId: string
@@ -20,6 +21,9 @@ interface NewBookingEmailProps {
   // eventImage: string
   bookingTime: Date
   userName: string
+  isConfirmed?: boolean
+  bookingPaid: boolean
+  paidAmount?: number | null
 }
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "/"
@@ -30,6 +34,9 @@ export const NewBookingEmail = ({
   // eventImage,
   bookingTime,
   userName,
+  isConfirmed = false,
+  bookingPaid,
+  paidAmount,
 }: NewBookingEmailProps) => (
   <Html>
     <Head />
@@ -53,8 +60,26 @@ export const NewBookingEmail = ({
           {userName}
         </Text>
         <Text style={paragraph}>
-          Our Admin team will connect with you shortly to confirm.
+          <b>Confirmed: </b>
+          {isConfirmed ? "Yes" : "No"}
         </Text>
+        <Text style={paragraph}>
+          <b>Paid: </b>
+          {bookingPaid ? "Yes" : "No"} ({paidAmount ? `$${paidAmount}` : ""})
+        </Text>
+        {isConfirmed ? (
+          <Text style={paragraph}>
+            Booking is confirmed, please reach out to Admin team for any further
+            details.
+          </Text>
+        ) : (
+          <Text
+            style={{ ...paragraph, color: "orange", textEmphasis: "Highlight" }}
+          >
+            Note: This is a booking request only not the confirmation. Our Admin
+            team will connect with you shortly to confirm.
+          </Text>
+        )}
         <Section style={btnContainer}>
           <Button style={button} href={`${baseUrl}/bookings/${bookingId}/edit`}>
             View Booking
@@ -67,13 +92,21 @@ export const NewBookingEmail = ({
         </Text>
         <Hr style={hr} />
         <Text style={footer}>{siteConfig.address}</Text>
+        <Text style={footer}>{formatPhoneNumber(siteConfig.links.tel)}</Text>
       </Container>
     </Body>
   </Html>
 )
 
 NewBookingEmail.PreviewProps = {
-  eventTitle: "Alan",
+  bookingId: "333",
+  eventTitle: "Pooja Name",
+  // eventImage,
+  bookingTime: new Date(),
+  userName: "User Name",
+  isConfirmed: false,
+  bookingPaid: false,
+  paidAmount: 33,
 } as NewBookingEmailProps
 
 export default NewBookingEmail

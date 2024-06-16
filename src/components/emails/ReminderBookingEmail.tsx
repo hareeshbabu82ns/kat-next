@@ -13,6 +13,7 @@ import {
 import { format } from "date-fns"
 import * as React from "react"
 import { siteConfig } from "@/config/site"
+import { formatPhoneNumber } from "@/lib/utils"
 
 interface ReminderBookingEmailProps {
   bookingId: string
@@ -81,13 +82,21 @@ export const ReminderBookingEmail = ({
         </Text>
         <Hr style={hr} />
         <Text style={footer}>{siteConfig.address}</Text>
+        <Text style={footer}>{formatPhoneNumber(siteConfig.links.tel)}</Text>
       </Container>
     </Body>
   </Html>
 )
 
 ReminderBookingEmail.PreviewProps = {
-  eventTitle: "Alan",
+  bookingId: "333",
+  eventTitle: "Pooja Name",
+  // eventImage,
+  bookingTime: new Date(),
+  bookingConfirmed: false,
+  bookingPaid: false,
+  paidAmount: 33.33,
+  userName: "User Name",
 } as ReminderBookingEmailProps
 
 export default ReminderBookingEmail

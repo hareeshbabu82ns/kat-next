@@ -38,6 +38,8 @@ npm run db:gen # generates prisma client
 npm run db:migrate # not valid for mongodb
 npm run db:studio # opens db explorer
 
+npm run email # email designer
+
 npm run dev
 ```
 

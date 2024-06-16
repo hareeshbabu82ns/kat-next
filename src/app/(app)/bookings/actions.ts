@@ -83,6 +83,9 @@ export async function createBooking(data: Omit<Booking, "id">) {
         bookingTime: booking.date,
         eventTitle: booking.eventTitle,
         userName: booking.userName || booking.userEmail,
+        isConfirmed: booking.confirmed,
+        bookingPaid: booking.paid,
+        paidAmount: booking.paidAmount,
       }),
     })
   } catch (error) {
